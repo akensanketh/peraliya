@@ -7,7 +7,7 @@ Organized by the **Sisuvisara Media Unit** of **Sirimavo Bandaranaike Vidyalaya,
 
 ## 🌟 Overview
 
-**Peraliya '26** (පෙරළිය 2026) is the premier trilingual school media competition in Sri Lanka. It serves as an inspiring national platform uniting tradition with technological revolution, celebrating fearless journalism, broadcasting excellence, cinematic arts, and digital innovation.
+**Peraliya '26** (පෙරළිය 2026) is the premier bilingual (Sinhala & English) school media competition in Sri Lanka. It serves as an inspiring national platform uniting tradition with technological revolution, celebrating fearless journalism, broadcasting excellence, cinematic arts, and digital innovation.
 
 - **Institution**: Sirimavo Bandaranaike Vidyalaya, Colombo 07
 - **Organized By**: Sisuvisara Media Unit (සිසුවිසර මාධ්‍ය ඒකකය)

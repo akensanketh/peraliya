@@ -14,14 +14,14 @@ const CATEGORIES_DATA = [
     sinhala: 'ප්‍රවෘත්ති නිවේදන හා ප්‍රකාශන',
     type: 'broadcasting',
     mode: 'Onsite',
-    languages: 'Sinhala, English, Tamil',
+    languages: 'Sinhala, English',
     ageGroup: 'Junior (Gr. 6-8), Intermediate (Gr. 9-11), Senior (Gr. 12-13)',
     icon: 'fa-solid fa-microphone-lines',
     summary: 'Mastery of vocal projection, diction, poise, modulation, and teleprompter style live news presentation.',
     guidelines: [
       'Contestants will be provided a scripted news bulletin 15 minutes prior to live reading.',
       'Evaluation criteria: Pronunciation, voice control, pacing, posture, and studio composure.',
-      'Medium: Sinhala, English, and Tamil categories will be evaluated independently.',
+      'Medium: Sinhala and English categories will be evaluated independently.',
       'Time duration: 2 - 3 minutes per contestant.'
     ]
   },
@@ -31,7 +31,7 @@ const CATEGORIES_DATA = [
     sinhala: 'ක්ෂේත්‍ර පුවත් වාර්තාකරණය',
     type: 'journalism',
     mode: 'Onsite',
-    languages: 'Sinhala, English, Tamil',
+    languages: 'Sinhala, English',
     ageGroup: 'Intermediate & Senior',
     icon: 'fa-solid fa-newspaper',
     summary: 'Fast-paced investigative journalism, breaking news live coverage simulation, and field standup reporting.',
@@ -47,7 +47,7 @@ const CATEGORIES_DATA = [
     sinhala: 'වැඩසටහන් ඉදිරිපත් කිරීම',
     type: 'broadcasting',
     mode: 'Onsite',
-    languages: 'Sinhala, English, Tamil',
+    languages: 'Sinhala, English',
     ageGroup: 'Junior & Senior',
     icon: 'fa-solid fa-headset',
     summary: 'Hosting television & digital talk shows, morning shows, or cultural feature broadcasts with charismatic audience engagement.',
@@ -62,7 +62,7 @@ const CATEGORIES_DATA = [
     sinhala: 'ක්‍රීඩා විස්තර විචාරය',
     type: 'broadcasting',
     mode: 'Onsite',
-    languages: 'Sinhala, English, Tamil',
+    languages: 'Sinhala, English',
     ageGroup: 'Junior, Intermediate, Senior',
     icon: 'fa-solid fa-trophy',
     summary: 'High-adrenaline, real-time commentary of live sporting clips (Cricket, Football, Athletics, Rugby).',
@@ -110,7 +110,7 @@ const CATEGORIES_DATA = [
     sinhala: 'කෙටි චිත්‍රපට නිර්මාණය',
     type: 'visual',
     mode: 'Online',
-    languages: 'Sinhala, English, Tamil (Subtitles encouraged)',
+    languages: 'Sinhala, English (Subtitles encouraged)',
     ageGroup: 'Open (Max 5-member school crew)',
     icon: 'fa-solid fa-film',
     summary: 'Creative direction, cinematography, screenwriting, and sound design encapsulated in a short film.',
@@ -126,7 +126,7 @@ const CATEGORIES_DATA = [
     sinhala: 'කෘතිම බුද්ධි නිර්මාණ (AI Cinema)',
     type: 'digital',
     mode: 'Online',
-    languages: 'Trilingual / International',
+    languages: 'Bilingual (Sinhala / English) / International',
     ageGroup: 'Open Category',
     icon: 'fa-solid fa-wand-magic-sparkles',
     summary: 'Pioneering generative AI workflows combining cutting-edge text-to-video, generative audio, and futuristic concepts.',
@@ -188,7 +188,7 @@ const CATEGORIES_DATA = [
     sinhala: 'මාධ්‍ය ලිපි හා කතුවැකි රචනය',
     type: 'journalism',
     mode: 'Online',
-    languages: 'Sinhala, English, Tamil',
+    languages: 'Sinhala, English',
     ageGroup: 'Junior & Senior',
     icon: 'fa-solid fa-pen-nib',
     summary: 'In-depth feature writing, investigative essays, and commentary on contemporary media ethics.',
@@ -352,8 +352,8 @@ function initAudioToggle() {
 
 // Live Countdown to Peraliya '26
 function initCountdown() {
-  // Target Event Date: October 24, 2026 08:00:00 (Sri Lanka Time GMT+5:30)
-  const targetDate = new Date('2026-10-24T08:00:00+05:30').getTime();
+  // Target Event Date: October 10, 2026 08:00:00 (Sri Lanka Time GMT+5:30)
+  const targetDate = new Date('2026-10-10T08:00:00+05:30').getTime();
 
   function update() {
     const now = new Date().getTime();
@@ -400,7 +400,7 @@ function initStatsCounter() {
       runCounter('stat-contestants', 2500, '+', 1800);
       runCounter('stat-schools', 250, '+', 1800);
       runCounter('stat-categories', 14, '+', 1500);
-      runCounter('stat-languages', 3, '', 1200);
+      runCounter('stat-languages', 2, '', 1200);
     }
   }, { threshold: 0.3 });
 
@@ -805,6 +805,11 @@ function initRegistrationWorkflow() {
         if (btnCompleted) {
           btnCompleted.style.display = 'inline-flex';
           btnCompleted.onclick = () => openSuccessModal(code, name);
+        }
+
+        const btnRegWhatsapp = document.getElementById('btn-reg-whatsapp');
+        if (btnRegWhatsapp) {
+          btnRegWhatsapp.style.display = 'inline-flex';
         }
 
         // Mark step 3 as completed in stepper

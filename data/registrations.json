@@ -14,5 +14,53 @@
     "teacherWhatsapp": "0773456789",
     "teacherEmail": "fernando@dss.sch.lk",
     "presidentName": ""
+  },
+  {
+    "type": "registration",
+    "schoolCode": "SC002",
+    "refCode": "SC002",
+    "timestamp": "2026-09-27T22:24:41.567Z",
+    "schoolName": "Ananda College, Colombo 10",
+    "province": "Western Province",
+    "district": "Colombo",
+    "schoolPhone": "011 2695500",
+    "schoolEmail": "media@ananda.sch.lk",
+    "teacherName": "Mr. Perera",
+    "teacherPhone": "0771234567",
+    "teacherWhatsapp": "0771234567",
+    "teacherEmail": "coordinator@ananda.sch.lk",
+    "presidentName": ""
+  },
+  {
+    "type": "registration",
+    "schoolCode": "SC001",
+    "refCode": "SC001",
+    "timestamp": "2026-09-27T22:28:02.227Z",
+    "schoolName": "Mahanama College, Colombo 03",
+    "province": "Western Province",
+    "district": "Colombo",
+    "schoolPhone": "0112574381",
+    "schoolEmail": "akensankethofficial@gmail.com",
+    "teacherName": "Mr. N. Fernando",
+    "teacherPhone": "0123456789",
+    "teacherWhatsapp": "0771234567",
+    "teacherEmail": "test@mail.com",
+    "presidentName": ""
+  },
+  {
+    "type": "registration",
+    "schoolCode": "SC001",
+    "refCode": "SC001",
+    "timestamp": "2026-09-27T22:28:03.477Z",
+    "schoolName": "Mahanama College, Colombo 03",
+    "province": "Western Province",
+    "district": "Colombo",
+    "schoolPhone": "0112574381",
+    "schoolEmail": "akensankethofficial@gmail.com",
+    "teacherName": "Mr. N. Fernando",
+    "teacherPhone": "0123456789",
+    "teacherWhatsapp": "0771234567",
+    "teacherEmail": "test@mail.com",
+    "presidentName": ""
   }
 ]
