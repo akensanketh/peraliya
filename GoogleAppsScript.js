@@ -6,6 +6,8 @@
  * ==========================================================================
  * Spreadsheet ID: 1fHLmBIICtzFRmSsMANHo2c6yxS1T7yDW-WPl58szVq4
  * Spreadsheet URL: https://docs.google.com/spreadsheets/d/1fHLmBIICtzFRmSsMANHo2c6yxS1T7yDW-WPl58szVq4/edit
+ * Web App URL: https://script.google.com/macros/s/AKfycbxpfR2UuITpGXnNgV4r3G2E2anHxtQLzrloID8WZJ2fvWzBEZTS8RimPwM3zxZLmpSC/exec
+ * Library Version 2: https://script.google.com/macros/library/d/1-bOb8BvDGG9hhAB9eI_tpEDZnOK46BH6x0N9ZB9MbmSkgRTutVzwQqes/2
  *
  * HOW TO UPDATE / DEPLOY IN GOOGLE SHEETS:
  * 1. Open Google Sheet: https://docs.google.com/spreadsheets/d/1fHLmBIICtzFRmSsMANHo2c6yxS1T7yDW-WPl58szVq4/edit
@@ -21,37 +23,32 @@
 function getLastSchoolCodeInfo(sheet) {
   var lastRow = sheet.getLastRow();
   var maxNum = 0;
-  var lastCodeFound = null;
 
   if (lastRow > 1) {
     // Read Column 2 (School Code column)
     var codeRange = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
-    // Scan backwards from bottom to top to identify the most recent SC code
+    // Scan all rows to identify the highest SC code
     for (var i = codeRange.length - 1; i >= 0; i--) {
       var val = String(codeRange[i][0] || '').trim();
       var match = val.match(/^SC(\d+)$/i);
       if (match) {
         var num = parseInt(match[1], 10);
-        if (!isNaN(num)) {
-          if (!lastCodeFound) {
-            var padLast = ("000" + num).slice(-Math.max(3, String(num).length));
-            lastCodeFound = "SC" + padLast;
-          }
-          if (num > maxNum) {
-            maxNum = num;
-          }
+        if (!isNaN(num) && num > maxNum) {
+          maxNum = num;
         }
       }
     }
   }
 
+  // Last code strictly reflects the highest SC code found
+  var lastCode = maxNum > 0 ? "SC" + ("000" + maxNum).slice(-Math.max(3, String(maxNum).length)) : null;
   // Next number is strictly the number after the last/highest SC code found
   var nextNum = maxNum + 1;
   var paddedNext = ("000" + nextNum).slice(-Math.max(3, String(nextNum).length));
   var nextCode = "SC" + paddedNext;
 
   return {
-    lastCode: lastCodeFound,
+    lastCode: lastCode,
     lastNum: maxNum,
     nextCode: nextCode,
     nextNum: nextNum

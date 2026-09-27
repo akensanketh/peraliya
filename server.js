@@ -78,25 +78,25 @@ function fetchLiveSheetCsv() {
 // Check the last school code across Google Sheet & local DB, and compute the next sequential code
 async function getLastAndNextSchoolCode() {
   let maxNum = 0;
-  let lastCodeFound = null;
+  let googleSheetChecked = false;
 
-  // 1. Check live Google Sheet if online
+  // 1. Check live Google Sheet if online (Primary Master Source of Truth)
   try {
     const csvData = await fetchLiveSheetCsv();
-    if (csvData) {
+    if (csvData !== null && csvData !== undefined) {
+      googleSheetChecked = true;
       const lines = csvData.split('\n');
       for (let i = lines.length - 1; i >= 0; i--) {
-        const cols = lines[i].split(',');
+        const line = lines[i].trim();
+        if (!line) continue;
+        const cols = line.split(',');
         for (const col of cols) {
           const clean = col.replace(/["'\r]/g, '').trim();
           const match = clean.match(/^SC(\d+)$/i);
           if (match) {
             const num = parseInt(match[1], 10);
-            if (!isNaN(num)) {
-              if (num > maxNum) maxNum = num;
-              if (!lastCodeFound) {
-                lastCodeFound = `SC${String(num).padStart(3, '0')}`;
-              }
+            if (!isNaN(num) && num > maxNum) {
+              maxNum = num;
             }
           }
         }
@@ -106,31 +106,32 @@ async function getLastAndNextSchoolCode() {
     console.warn('Could not inspect live Google Sheet:', err.message);
   }
 
-  // 2. Also check local registrations.json
-  try {
-    const localRegs = readJSONFile(REGISTRATIONS_FILE);
-    localRegs.forEach(r => {
-      const code = r.schoolCode || r.refCode || '';
-      const match = String(code).match(/^SC(\d+)$/i);
-      if (match) {
-        const num = parseInt(match[1], 10);
-        if (!isNaN(num) && num > maxNum) {
-          maxNum = num;
-          if (!lastCodeFound) {
-            lastCodeFound = `SC${String(num).padStart(3, '0')}`;
+  // 2. Fallback to local registrations.json ONLY if Google Sheet could not be checked (offline)
+  if (!googleSheetChecked) {
+    try {
+      const localRegs = readJSONFile(REGISTRATIONS_FILE);
+      localRegs.forEach(r => {
+        const code = r.schoolCode || r.refCode || '';
+        const match = String(code).match(/^SC(\d+)$/i);
+        if (match) {
+          const num = parseInt(match[1], 10);
+          if (!isNaN(num) && num > maxNum) {
+            maxNum = num;
           }
         }
-      }
-    });
-  } catch (err) {
-    console.warn('Error reading local registrations:', err.message);
+      });
+    } catch (err) {
+      console.warn('Error reading local registrations:', err.message);
+    }
   }
 
+  // If there are no registrations in Google Sheet (maxNum === 0), starts strictly with SC001
+  const lastCode = maxNum > 0 ? `SC${String(maxNum).padStart(3, '0')}` : null;
   const nextNum = maxNum + 1;
   const nextCode = `SC${String(nextNum).padStart(3, '0')}`;
 
   return {
-    lastCode: lastCodeFound,
+    lastCode: lastCode,
     lastNum: maxNum,
     nextCode: nextCode,
     nextNum: nextNum
