@@ -624,14 +624,6 @@ function initRegistrationWorkflow() {
         showToast('Please specify the district.');
         return false;
       }
-      if (!schoolPhone) {
-        showToast('Please provide a school office contact telephone.');
-        return false;
-      }
-      if (!schoolEmail) {
-        showToast('Please provide an official school or media unit email.');
-        return false;
-      }
       return true;
     } else if (step === 2) {
       const teacherName = document.getElementById('reg-teacher-name')?.value.trim();
@@ -704,8 +696,6 @@ function initRegistrationWorkflow() {
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; font-size: 0.88rem; color: #cbd5e1; margin-bottom: 1.2rem;">
           <div><strong style="color: #fff;">Institution:</strong><br>${school}</div>
           <div><strong style="color: #fff;">Province & District:</strong><br>${province} (${district})</div>
-          <div><strong style="color: #fff;">Office Phone:</strong><br>${schoolPhone}</div>
-          <div><strong style="color: #fff;">School Email:</strong><br>${schoolEmail}</div>
         </div>
 
         <h4 style="color: var(--color-cyan); font-family: var(--font-heading); font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 0.8rem;">
