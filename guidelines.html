@@ -4,35 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Official Rulebook & Guidelines — Peraliya '26 | Sirimavo Bandaranaike Vidyalaya</title>
-  <meta name="description" content="Comprehensive rules, scoring rubrics, and submission guidelines for Peraliya '26 All-Island Inter-School Media Competition organized by Sisuvisara Media Unit.">
+  <meta name="description" content="Official Rules & Regulations handbook for Peraliya '26 All-Island Inter-School Media Competition organized by Sisuvisara Media Unit.">
   <link rel="icon" type="image/png" href="assets/SBV_MediaUnit_logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
     .handbook-hero {
-      padding: 4rem 0 3rem;
-      background: radial-gradient(circle at 50% 30%, rgba(0, 112, 243, 0.15) 0%, #050811 100%);
+      padding: 4rem 1rem 3rem;
+      background: radial-gradient(circle at 50% 30%, rgba(0, 112, 243, 0.18) 0%, #050811 100%);
       border-bottom: 1px solid var(--border-cyan);
       text-align: center;
     }
     .handbook-content {
-      padding: 4rem 0;
-      max-width: 900px;
+      padding: 3rem 1rem 5rem;
+      max-width: 960px;
       margin-inline: auto;
     }
     .rule-section-block {
       background: var(--bg-card);
       border: 1px solid var(--border-cyan);
       border-radius: var(--radius-lg);
-      padding: clamp(1.8rem, 4vw, 2.8rem);
-      margin-bottom: 2.5rem;
+      padding: clamp(1.6rem, 3.5vw, 2.5rem);
+      margin-bottom: 2rem;
       backdrop-filter: blur(16px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .rule-title {
       font-family: var(--font-heading);
       color: var(--color-cyan);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       margin-bottom: 1.2rem;
       display: flex;
@@ -41,32 +41,69 @@
       border-bottom: 1px solid rgba(56, 189, 248, 0.2);
       padding-bottom: 0.6rem;
     }
-    .rule-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.92rem;
-    }
-    .rule-table th, .rule-table td {
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(56, 189, 248, 0.18);
-      text-align: left;
-    }
-    .rule-table th {
-      background: rgba(0, 229, 255, 0.1);
-      color: #ffffff;
+    .rule-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid var(--border-cyan);
+      color: var(--color-cyan);
+      font-size: 0.78rem;
       font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
     }
-    .rule-table td {
+    .rule-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .rule-list li {
+      position: relative;
+      padding-left: 1.8rem;
       color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 0.94rem;
+    }
+    .rule-list li::before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      color: var(--color-cyan);
+      font-size: 0.95rem;
+    }
+    .rule-list.warning-list li::before {
+      content: "\f071";
+      color: #f59e0b;
+    }
+    .pdf-download-banner {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.12) 0%, rgba(2, 132, 199, 0.15) 100%);
+      border: 1px solid var(--border-cyan-bright);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
     }
     @media print {
       body { background: #fff !important; color: #000 !important; }
-      .site-header, .site-footer, .btn-primary-glow, .ambient-fx-wrap, .grid-overlay { display: none !important; }
+      .site-header, .site-footer, .btn-primary-glow, .ambient-fx-wrap, .grid-overlay, .pdf-download-banner, .btn-secondary-glass { display: none !important; }
       .rule-section-block { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; box-shadow: none !important; }
       .rule-title { color: #000 !important; border-color: #000 !important; }
-      .rule-table th { background: #eee !important; color: #000 !important; }
-      .rule-table td { color: #000 !important; }
+      .rule-list li { color: #000 !important; }
+      .rule-list li::before { color: #000 !important; }
     }
   </style>
 </head>
@@ -91,16 +128,19 @@
           </div>
           <div class="brand-text">
             <span class="brand-title">PERALIYA '26</span>
-            <span class="brand-school">Official Rulebook Handbook</span>
+            <span class="brand-school">Official Rules & Regulations</span>
           </div>
         </a>
 
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <button type="button" class="btn-primary-glow" onclick="window.print()" style="padding: 0.55rem 1.3rem; font-size: 0.88rem;">
-            <i class="fa-solid fa-print"></i> Print / Save PDF
+        <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+          <a href="assets/Peraliya26%20Rules%20And%20Regulations.pdf" target="_blank" download class="btn-primary-glow" style="padding: 0.55rem 1.3rem; font-size: 0.88rem; text-decoration: none;">
+            <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+          </a>
+          <button type="button" class="btn-secondary-glass" onclick="window.print()" style="padding: 0.55rem 1.1rem; font-size: 0.88rem;">
+            <i class="fa-solid fa-print"></i> Print
           </button>
-          <a href="index.html" class="btn-secondary-glass" style="padding: 0.55rem 1.3rem; font-size: 0.88rem;">
-            <i class="fa-solid fa-arrow-left"></i> Return to Main Site
+          <a href="index.html" class="btn-secondary-glass" style="padding: 0.55rem 1.1rem; font-size: 0.88rem; text-decoration: none;">
+            <i class="fa-solid fa-arrow-left"></i> Main Site
           </a>
         </div>
       </div>
@@ -110,39 +150,221 @@
       
       <div class="handbook-hero">
         <span class="hero-tag-badge">SISUVISARA MEDIA UNIT • SIRIMAVO BANDARANAIKE VIDYALAYA</span>
-        <h1 class="hero-main-title" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.5rem;">PERALIYA '26 OFFICIAL RULEBOOK</h1>
-        <p style="color: var(--text-secondary); max-width: 700px; margin-inline: auto;">
-          The official handbook of eligibility, evaluation guidelines, disciplinary codes, and aggregate scoring system for the All-Island Inter-School Media Competition 2026.
+        <h1 class="hero-main-title" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.5rem;">PERALIYA '26 RULES &amp; REGULATIONS</h1>
+        <p style="color: var(--text-secondary); max-width: 720px; margin-inline: auto; font-size: 1rem; line-height: 1.6;">
+          Official regulations, category criteria, format requirements, and submission instructions for the All-Island Inter-School Media Competition 2026.
         </p>
       </div>
 
       <div class="handbook-content">
 
-        <!-- Section 1: General Regulations -->
+        <!-- Download Banner -->
+        <div class="pdf-download-banner">
+          <div>
+            <div style="font-weight: 700; color: #fff; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <i class="fa-solid fa-file-pdf" style="color: var(--color-cyan); font-size: 1.25rem;"></i>
+              Official Rules & Regulations Document (PDF)
+            </div>
+            <div style="font-size: 0.88rem; color: var(--text-secondary);">
+              Download the official, authenticated rulebook package as issued by the Sisuvisara Media Unit.
+            </div>
+          </div>
+          <a href="assets/Peraliya26%20Rules%20And%20Regulations.pdf" target="_blank" download class="btn-primary-glow" style="padding: 0.65rem 1.5rem; text-decoration: none; white-space: nowrap;">
+            <i class="fa-solid fa-download"></i> Download Official PDF
+          </a>
+        </div>
+
+        <!-- Section 1: General Guidelines -->
         <div class="rule-section-block">
-          <h2 class="rule-title"><i class="fa-solid fa-gavel"></i> 1. General Eligibility & Codes of Conduct</h2>
-          <p style="color: #cbd5e1; margin-bottom: 1rem; line-height: 1.7;">
-            The competition is open to all students of schools accredited under the Ministry of Education of Sri Lanka, as well as private and international schools operating within the island.
-          </p>
-          <ul style="color: #cbd5e1; line-height: 1.8; padding-left: 1.2rem;">
-            <li><strong>Age Qualification:</strong> All contestants must be born on or after <strong>February 1, 2007</strong>. Proof of age (Birth Certificate or Certified Student Record) must be provided upon request.</li>
-            <li><strong>Official Endorsement:</strong> Contestant entries must be verified and endorsed by the Principal or School Coordinator of the respective school's Media Unit.</li>
-            <li><strong>Student Identity:</strong> Contestants must present their school identity card or student record book bearing their photograph on the day of on-site competitions.</li>
-            <li><strong>Dress Code:</strong> On-site competitors must be attired in their complete, pristine school uniform for all preliminary and final rounds.</li>
+          <div class="rule-category-badge"><i class="fa-solid fa-shield-halved"></i> Institutional Framework</div>
+          <h2 class="rule-title"><i class="fa-solid fa-gavel"></i> General Guidelines</h2>
+          <ul class="rule-list">
+            <li><strong>Organizing Body:</strong> Peraliya ’26, the All-Island Inter-School Media Day Competition, is organized by the <strong>Sisuvisara Media Unit of Sirimavo Bandaranaike Vidyalaya, Colombo 07</strong>.</li>
+            <li><strong>Competition Dates:</strong> The competition will be conducted online on <strong>10th and 11th October 2026</strong>.</li>
+            <li><strong>Age Eligibility:</strong> All participants must have been born <strong>on or after 31st January 2007</strong> to be eligible to participate in the competition.</li>
+            <li><strong>Nomination Quota:</strong> Each participating school may nominate a <strong>maximum of two contestants</strong> for each competition category. A contestant may participate in <strong>only one category</strong>.</li>
+            <li><strong>Discipline &amp; Conduct:</strong> All participants are expected to maintain proper school discipline and conduct throughout the competition and must comply with the instructions issued by the organizing committee.</li>
+            <li><strong>Official Attire:</strong> Participants taking part in <strong>News Presenting, Program Presenting, Dubbing, and Sports Commentary</strong> must wear their <strong>school uniform</strong> when recording their submissions.</li>
+            <li><strong>Category WhatsApp Groups:</strong> Contestants must join the official WhatsApp group assigned to their respective category, as important instructions, materials, and announcements will be communicated through these groups.</li>
+            <li><strong>Submission Deadlines:</strong> All submissions must be made through the official submission method provided by the organizing committee and within the specified deadline. <em>Late submissions will not be accepted.</em></li>
+            <li><strong>School Code &amp; File Naming:</strong> Each participating school will be provided with a unique School Code (e.g. <code>SCH001</code>). Contestants must strictly follow the specified file-naming format when submitting their entries.</li>
+            <li><strong>Self-Introduction:</strong> For categories requiring a self-introduction, contestants must clearly provide the required identification details specified under the relevant category guidelines.</li>
+            <li><strong>Panel of Judges:</strong> All entries will be assessed by a panel of judges appointed by the organizing committee. <strong>The decision of the judging panel shall be final.</strong></li>
+            <li><strong>Disqualification:</strong> Any submission that does not comply with the specific requirements of its respective category may be subject to disqualification.</li>
+            <li><strong>Official Channels:</strong> Further announcements, instructions, and competition-related updates will be communicated through the official competition communication channels.</li>
           </ul>
         </div>
 
-        <!-- Section 2: Appeals & Disclaimers -->
+        <!-- Section 2: News Presenting -->
         <div class="rule-section-block">
-          <h2 class="rule-title"><i class="fa-solid fa-certificate"></i> 2. Judging Panel & Finality of Decisions</h2>
-          <p style="color: #cbd5e1; line-height: 1.7;">
-            The evaluation panel is independent, anonymous prior to competition day, and comprises leading journalists, broadcast anchors, film directors, and university lecturers. The verdict of the judges as ratified by the Principal and Advisory Council of Sirimavo Bandaranaike Vidyalaya shall be final and not subject to appeal.
-          </p>
-          <div style="margin-top: 1.8rem; text-align: center;">
-            <a href="index.html" class="btn-primary-glow">
-              <i class="fa-solid fa-house"></i> Return to Main Site
-            </a>
-          </div>
+          <div class="rule-category-badge"><i class="fa-solid fa-microphone-lines"></i> Broadcast Stream</div>
+          <h2 class="rule-title"><i class="fa-solid fa-newspaper"></i> News Presenting</h2>
+          <ul class="rule-list">
+            <li><strong>Languages &amp; Categories:</strong> Conducted in <strong>English and Sinhala</strong> under <strong>Junior, Intermediate, and Senior</strong> categories.</li>
+            <li><strong>Scripts:</strong> Two official scripts will be provided; participants must select one.</li>
+            <li><strong>Segments:</strong> Contestants must deliver all segments included in the selected script: a <strong>news report</strong>, a <strong>live report</strong>, and a <strong>documentary</strong>.</li>
+            <li><strong>Self-Introduction:</strong> At the beginning of the video, participants must clearly state their <em>name, category, script number, and school name</em>.</li>
+            <li><strong>Video Format:</strong> Submissions must be a <strong>single, continuous, unedited MP4 video</strong>. Any edited or cut video will result in immediate disqualification.</li>
+            <li><strong>Duration:</strong> Maximum duration is <strong>4–5 minutes</strong>. Exceeding the specified time limit will result in disqualification.</li>
+            <li><strong>Quality:</strong> Audio and visual quality must be clear and suitable for evaluation. Contestants must wear their official school uniform.</li>
+            <li><strong>Deadline:</strong> Submissions must be made on or before <strong>10th October 2026</strong>. Late submissions will not be accepted.</li>
+            <li><strong>Judges' Decision:</strong> Judges' decisions are final.</li>
+          </ul>
+        </div>
+
+        <!-- Section 3: Dubbing -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-headphones"></i> Voice Acting Stream</div>
+          <h2 class="rule-title"><i class="fa-solid fa-microphone"></i> Dubbing</h2>
+          <ul class="rule-list">
+            <li><strong>Languages:</strong> Conducted in <strong>Sinhala and English</strong>.</li>
+            <li><strong>Age Categories:</strong> <strong>Junior</strong> (Grades 6 to 9) &amp; <strong>Senior</strong> (Grades 10 to 11).</li>
+            <li><strong>Material:</strong> Scripts and relevant video clips will be shared through the respective WhatsApp groups.</li>
+            <li><strong>Clip Selection:</strong> Contestants may select one of the two provided clips for dubbing.</li>
+            <li><strong>Visibility:</strong> <strong>Both the contestant and the selected video clip must be clearly visible</strong> in the submitted video. Must be attired in school uniform.</li>
+            <li><strong>Deadline:</strong> Submissions must be completed by <strong>midnight on 10th October 2026</strong>.</li>
+            <li><strong>Judges' Decision:</strong> The judges' decision is final and cannot be challenged.</li>
+          </ul>
+        </div>
+
+        <!-- Section 4: Program Presenting -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-tv"></i> Media Presenting</div>
+          <h2 class="rule-title"><i class="fa-solid fa-bullhorn"></i> Program Presenting</h2>
+          <ul class="rule-list">
+            <li><strong>Languages &amp; Categories:</strong> Conducted in <strong>Sinhala and English</strong> under <strong>Junior, Intermediate, and Senior</strong> categories.</li>
+            <li><strong>Script Delivery:</strong> Contestants must present all segments provided in the official script.</li>
+            <li><strong>Video Format:</strong> Each contestant must submit <strong>one single, continuous, unedited MP4 video</strong>. Edited or cut videos will result in immediate disqualification.</li>
+            <li><strong>Attire:</strong> School uniform is mandatory during recording.</li>
+            <li><strong>Duration:</strong> Maximum duration is <strong>4–5 minutes</strong>. The specified time limit must not be exceeded.</li>
+            <li><strong>Quality:</strong> Audio and visual quality must be clear.</li>
+            <li><strong>Deadline:</strong> Submissions must be made by <strong>midnight on 10th October 2026</strong>. Late submissions will not be accepted.</li>
+            <li><strong>Judges' Decision:</strong> Judges' decisions are final.</li>
+          </ul>
+        </div>
+
+        <!-- Section 5: Sports Commentary -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-baseball-bat-ball"></i> Live Broadcast</div>
+          <h2 class="rule-title"><i class="fa-solid fa-trophy"></i> Sports Commentary</h2>
+          <ul class="rule-list">
+            <li><strong>Category &amp; Language:</strong> This is an <strong>Open competition</strong> conducted in <strong>Sinhala and English</strong>.</li>
+            <li><strong>Materials:</strong> Relevant video clips will be shared through the designated WhatsApp groups.</li>
+            <li><strong>Sport Selection:</strong> Participants must select one sport from <strong>Cricket, Football, or Rugby</strong> and provide commentary based on the assigned video.</li>
+            <li><strong>Visibility:</strong> <strong>Both the contestant (in school uniform) and selected video clip must be clearly visible</strong>.</li>
+            <li><strong>Video Format:</strong> The submission must be a <strong>single, continuous, unedited video</strong>. Editing, cutting, or altering the video will result in immediate disqualification.</li>
+            <li><strong>Deadline:</strong> Submissions must be completed before <strong>midnight on 10th October 2026</strong>.</li>
+            <li><strong>Judges' Decision:</strong> The judges' decision is final.</li>
+          </ul>
+        </div>
+
+        <!-- Section 6: News Editing -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-pen-fancy"></i> Print Journalism</div>
+          <h2 class="rule-title"><i class="fa-solid fa-newspaper"></i> News Editing</h2>
+          <ul class="rule-list">
+            <li><strong>Languages &amp; Categories:</strong> Conducted in <strong>Sinhala and English</strong> under <strong>Junior, Intermediate, and Senior</strong> categories.</li>
+            <li><strong>Timed Window:</strong>
+              <br>• <strong>Junior:</strong> 2 hours (10:00 a.m. – 12:00 p.m.)
+              <br>• <strong>Intermediate and Senior:</strong> 3 hours (10:00 a.m. – 1:00 p.m.)
+            </li>
+            <li><strong>Handwritten Requirement:</strong> All answers must be <strong>handwritten clearly</strong>.</li>
+            <li><strong>Format:</strong> Completed scripts must be scanned or photographed and submitted as a <strong>single PDF</strong>.</li>
+            <li><strong>File Naming Format:</strong> Strictly <code>SCH001_Name</code> (using your school code and contestant name).</li>
+            <li><strong>Close of Window:</strong> Junior submissions close at 12:00 p.m.; Intermediate and Senior submissions close at 1:00 p.m. Late entries will not be accepted.</li>
+            <li><strong>No AI:</strong> <strong>AI-generated answers are strictly prohibited.</strong> Any violation will result in immediate disqualification.</li>
+            <li><strong>Judges' Decision:</strong> The judges' decision is final.</li>
+          </ul>
+        </div>
+
+        <!-- Section 7: Technical Paper -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-microchip"></i> Media Technology</div>
+          <h2 class="rule-title"><i class="fa-solid fa-file-lines"></i> Technical Paper</h2>
+          <ul class="rule-list">
+            <li><strong>Category &amp; Languages:</strong> Conducted in <strong>Sinhala and English</strong> languages under the <strong>Open category</strong>.</li>
+            <li><strong>Submission Method:</strong> Answers must be entered directly into the designated fields in the provided <strong>Google Form</strong>.</li>
+            <li><strong>Independence &amp; Integrity:</strong> Participants must work independently. <strong>The use of AI tools is strictly prohibited.</strong></li>
+            <li><strong>Duration:</strong> <strong>1 hour 30 minutes</strong>.</li>
+            <li><strong>Deadline:</strong> Answers must be submitted within the specified time frame. The form will stop accepting responses at the deadline.</li>
+            <li><strong>Penalties:</strong> Violation of the rules may result in disqualification.</li>
+            <li><strong>Judges' Decision:</strong> The judges' decision is final.</li>
+          </ul>
+        </div>
+
+        <!-- Section 8: Graphic Designing -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-palette"></i> Digital Art</div>
+          <h2 class="rule-title"><i class="fa-solid fa-bezier-curve"></i> Graphic Designing</h2>
+          <ul class="rule-list">
+            <li><strong>Category:</strong> This is an <strong>Open Category</strong> competition.</li>
+            <li><strong>Theme &amp; Format:</strong> Participants must select one of the themes provided and submit their design as a <strong>JPG or PNG file</strong> before the announced deadline.</li>
+            <li><strong>Software:</strong> Any suitable design software may be used, including <strong>Adobe Photoshop and Adobe Illustrator</strong>.</li>
+            <li><strong>Originality:</strong> The submitted work must be the contestant's original creation.</li>
+            <li><strong>No AI or Plagiarism:</strong> Copied content or <strong>AI-generated designs will result in immediate disqualification</strong>.</li>
+          </ul>
+        </div>
+
+        <!-- Section 9: Photography -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-camera"></i> Visual Arts</div>
+          <h2 class="rule-title"><i class="fa-solid fa-camera-retro"></i> Photography</h2>
+          <ul class="rule-list">
+            <li><strong>Category &amp; Subcategories:</strong> <strong>Open Category</strong> competition with three subcategories:
+              <br>• <strong>Colour Photography</strong>
+              <br>• <strong>Monochrome Photography</strong>
+              <br>• <strong>Mobile Photography</strong>
+            </li>
+            <li><strong>Submission Limit:</strong> Each participant may submit a <strong>maximum of three photos per subcategory</strong>. Participation in multiple subcategories is permitted.</li>
+            <li><strong>Equipment:</strong> Images captured using <strong>DSLR or mirrorless cameras</strong> are permitted (and mobile cameras for the Mobile Photography subcategory).</li>
+            <li><strong>File Size:</strong> Each image file must <strong>not exceed 20 MB</strong>.</li>
+            <li><strong>RAW Image Verification:</strong> If requested by the judging panel, the participant must provide the <strong>original RAW image</strong>.</li>
+            <li><strong>No Watermarks:</strong> Photos must <strong>not contain watermarks or the participant's name</strong>.</li>
+            <li><strong>Submission Channel:</strong> Submissions will be accepted only through the designated submission link and within the announced deadline.</li>
+          </ul>
+        </div>
+
+        <!-- Section 10: Videography -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-video"></i> Cinematography</div>
+          <h2 class="rule-title"><i class="fa-solid fa-film"></i> Videography</h2>
+          <ul class="rule-list">
+            <li><strong>Originality of Footage:</strong> All footage must be captured by the contestant.</li>
+            <li><strong>No Pre-existing or AI Footage:</strong> Pre-existing footage, AI-generated content, and AI-enhanced visual or audio content are <strong>not permitted</strong>.</li>
+            <li><strong>Raw Footage Requirement:</strong> Contestants must submit <strong>both the final video and the original camera footage</strong>.</li>
+            <li><strong>Duration:</strong> <strong>Maximum duration: 2 minutes. Minimum duration: 60 seconds.</strong></li>
+            <li><strong>Watermarks:</strong> No watermarks are permitted.</li>
+            <li><strong>Content Standard:</strong> Content must be appropriate for a school competition.</li>
+            <li><strong>Permitted Equipment:</strong> Any recording device may be used; however, <strong>drone cameras are strictly prohibited</strong>.</li>
+            <li><strong>Deadline:</strong> Submissions must be made within the specified timeline. Late submissions will not be accepted.</li>
+          </ul>
+        </div>
+
+        <!-- Section 11: Cartoon Drawing -->
+        <div class="rule-section-block">
+          <div class="rule-category-badge"><i class="fa-solid fa-paintbrush"></i> Illustration</div>
+          <h2 class="rule-title"><i class="fa-solid fa-pencil"></i> Cartoon Drawing</h2>
+          <ul class="rule-list">
+            <li><strong>Category:</strong> This is an <strong>Open Category</strong> competition.</li>
+            <li><strong>Topics:</strong> Competition topics will be communicated through the relevant WhatsApp groups.</li>
+            <li><strong>Permitted Mediums:</strong> <strong>Drawing pencils and black pens may be used.</strong> No other colour medium is permitted.</li>
+            <li><strong>Medium &amp; Size:</strong> Drawings must be completed on <strong>A4-size paper</strong>.</li>
+            <li><strong>Submission Method:</strong> Participants must upload a photograph of their completed drawing through the designated submission link.</li>
+            <li><strong>Deadline:</strong> All drawings must be uploaded before the announced deadline.</li>
+          </ul>
+        </div>
+
+        <!-- Quick Action Footer -->
+        <div style="margin-top: 3rem; text-align: center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="assets/Peraliya26%20Rules%20And%20Regulations.pdf" target="_blank" download class="btn-primary-glow" style="text-decoration: none;">
+            <i class="fa-solid fa-file-arrow-down"></i> Download Rulebook PDF
+          </a>
+          <a href="index.html#register" class="btn-primary-glow" style="text-decoration: none;">
+            <i class="fa-solid fa-school"></i> Proceed to Registration
+          </a>
+          <a href="index.html" class="btn-secondary-glass" style="text-decoration: none;">
+            <i class="fa-solid fa-house"></i> Return to Main Site
+          </a>
         </div>
 
       </div>
@@ -153,7 +375,7 @@
     <footer class="site-footer">
       <div class="container footer-bottom">
         <p>&copy; 2026 Sisuvisara Media Unit — Sirimavo Bandaranaike Vidyalaya, Colombo 07. All Rights Reserved.</p>
-        <p><a href="index.html">Peraliya '26 Official Portal</a></p>
+        <p><a href="index.html">Peraliya '26 Official Portal</a> • <a href="assets/Peraliya26%20Rules%20And%20Regulations.pdf" target="_blank" download>Download Rulebook (PDF)</a></p>
         <p class="footer-credit" style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem; letter-spacing: 0.5px;">
           Designed and developed by <span style="color: var(--color-cyan); font-weight: 700;">Aken Sanketh</span>
         </p>

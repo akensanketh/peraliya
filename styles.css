@@ -2213,6 +2213,17 @@ ul {
   line-height: 1.6;
 }
 
+.contact-detail-text a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-detail-text a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .map-embed-box {
   border-radius: var(--radius-lg);
   overflow: hidden;
