@@ -597,8 +597,8 @@
       renderGroups(q);
     }
 
-    // Auto highlight registered groups if URL query parameters exist
-    window.addEventListener('DOMContentLoaded', function () {
+    // Auto render & highlight registered groups if URL query parameters exist
+    function initWhatsAppPortal() {
       renderGroups();
 
       const urlParams = new URLSearchParams(window.location.search);
@@ -607,9 +607,12 @@
       const school = urlParams.get('school');
 
       if (regCat || school) {
-        document.getElementById('registered-notice').style.display = 'block';
+        const noticeEl = document.getElementById('registered-notice');
+        if (noticeEl) noticeEl.style.display = 'block';
+
         if (school) {
-          document.getElementById('registered-school-title').innerText = `Registered WhatsApp Groups for (${school.toUpperCase()})`;
+          const titleEl = document.getElementById('registered-school-title');
+          if (titleEl) titleEl.innerText = `Registered WhatsApp Groups for (${school.toUpperCase()})`;
         }
 
         // Highlight matching group cards
@@ -623,7 +626,14 @@
             }
           }
         });
-    });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initWhatsAppPortal);
+    } else {
+      initWhatsAppPortal();
+    }
   </script>
 </body>
 
