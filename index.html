@@ -90,7 +90,9 @@
         <nav class="desktop-nav" aria-label="Main Navigation">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#about" class="nav-link">About</a>
-          <a href="#register" class="nav-link">Registration</a>
+          <a href="#register" class="nav-link">School Registration</a>
+          <a href="contestants.html" class="nav-link">Contestant Registration</a>
+          <a href="guidelines.html" class="nav-link">Rulebook</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -100,9 +102,9 @@
             title="Interface Audio">
             <i class="fa-solid fa-volume-high"></i>
           </button>
-          <a href="#register" class="btn-header-cta">
-            <i class="fa-solid fa-pen-nib"></i>
-            <span>Register</span>
+          <a href="contestants.html" class="btn-header-cta">
+            <i class="fa-solid fa-user-pen"></i>
+            <span>Contestants</span>
           </a>
           <button type="button" class="hamburger" id="hamburger-btn" aria-label="Open Mobile Menu"
             aria-expanded="false">
@@ -121,10 +123,15 @@
         <a href="#home">Home</a>
         <a href="#about">About Peraliya '26</a>
         <a href="#register">School Registration</a>
+        <a href="contestants.html">Contestant Registration</a>
+        <a href="guidelines.html">Rules &amp; Regulations</a>
         <a href="#contact">Contact Unit</a>
       </div>
       <div style="margin-top: auto; display: flex; flex-direction: column; gap: 1rem;">
-        <a href="#register" class="btn-primary-glow" style="width: 100%; text-align: center;">
+        <a href="contestants.html" class="btn-primary-glow" style="width: 100%; text-align: center;">
+          <i class="fa-solid fa-user-pen"></i> Contestant Registration
+        </a>
+        <a href="#register" class="btn-secondary-glass" style="width: 100%; text-align: center;">
           <i class="fa-solid fa-school"></i> School Registration
         </a>
       </div>
@@ -159,7 +166,11 @@
 
           <!-- CTAs -->
           <div class="hero-cta-group" style="justify-content: center;">
-            <a href="#register" class="btn-primary-glow">
+            <a href="contestants.html" class="btn-primary-glow">
+              <i class="fa-solid fa-user-pen"></i>
+              <span>Contestant Registration</span>
+            </a>
+            <a href="#register" class="btn-secondary-glass">
               <i class="fa-solid fa-school"></i>
               <span>School Registration</span>
             </a>
@@ -284,12 +295,56 @@
         <div class="container">
 
           <div class="section-head">
-            <span class="section-subtitle">OFFICIAL INSTITUTIONAL ACCREDITATION</span>
-            <h2 class="section-title">ONLINE SCHOOL REGISTRATION PORTAL</h2>
+            <span class="section-subtitle">OFFICIAL COMPETITION REGISTRATION</span>
+            <h2 class="section-title">ONLINE REGISTRATION PORTALS</h2>
             <p class="section-lead">
-              Register your school for the Peraliya '26 All-Island Inter-School Media Competition. Upon submission, an
-              official School Code will be generated for your school delegation.
+              Select your registration portal below. Schools must register first to obtain an official School Code, which is then used by contestants to submit competition entries.
             </p>
+          </div>
+
+          <!-- Dual Registration Portal Cards / Slide Link Cards -->
+          <div class="registration-portal-slides" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+            
+            <!-- School Registration Slide Card -->
+            <div class="reg-slide-card active" style="background: rgba(13, 22, 41, 0.85); border: 2px solid var(--color-cyan); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--color-cyan); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); font-size: 1.3rem;">
+                  <i class="fa-solid fa-school"></i>
+                </div>
+                <div>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-cyan); font-weight: 700; letter-spacing: 1px;">Step 1 — Institutional</span>
+                  <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.15rem; margin: 0;">School Registration</h3>
+                </div>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.2rem;">
+                For Teachers-in-Charge & Media Coordinators to register your school delegation and generate an official School Code.
+              </p>
+              <a href="#school-reg-form" class="btn-secondary-glass" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Register School Below</span>
+              </a>
+            </div>
+
+            <!-- Contestant Registration Slide Card -->
+            <div class="reg-slide-card" style="background: rgba(13, 22, 41, 0.85); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; transition: var(--transition);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); font-size: 1.3rem;">
+                  <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <div>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-cyan); font-weight: 700; letter-spacing: 1px;">Step 2 — Individual / Team</span>
+                  <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.15rem; margin: 0;">Contestant Registration</h3>
+                </div>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.2rem;">
+                For students and team entries to register under their school's official School Code and submit competition entries.
+              </p>
+              <a href="contestants.html" class="btn-primary-glow" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem 1rem; font-size: 0.9rem;">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                <span>Go to Contestant Portal</span>
+              </a>
+            </div>
+
           </div>
 
           <div class="reg-card-container">
@@ -720,9 +775,12 @@
         </a>
       </div>
 
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="contestants.html" class="btn-primary-glow" style="padding: 0.75rem 1.5rem; font-size: 0.9rem; text-decoration: none;">
+          <i class="fa-solid fa-user-pen"></i> Register Contestants Now
+        </a>
         <button type="button" class="btn-secondary-glass" onclick="closeModal('success-modal')"
-          style="padding: 0.75rem 2rem;">
+          style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
           <i class="fa-solid fa-check"></i> Done &amp; Close
         </button>
       </div>

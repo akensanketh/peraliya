@@ -24,6 +24,7 @@ if (!fs.existsSync(DATA_DIR)) {
 
 const REGISTRATIONS_FILE = path.join(DATA_DIR, 'registrations.json');
 const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json');
+const CONTESTANTS_FILE = path.join(DATA_DIR, 'contestants.json');
 
 function readJSONFile(filePath) {
   try {
@@ -215,7 +216,7 @@ const MIME_TYPES = {
   '.webp': 'image/webp'
 };
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -345,6 +346,178 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+
+  // -------------------------------------------------------------
+  // API ROUTE: GET /api/verify-school-code?code=SC001
+  // -------------------------------------------------------------
+  if (req.method === 'GET' && pathname === '/api/verify-school-code') {
+    const queryCode = (parsedUrl.searchParams.get('code') || '').trim().toUpperCase();
+    const registrations = readJSONFile(REGISTRATIONS_FILE);
+    let found = registrations.find(r => 
+      (r.schoolCode && r.schoolCode.toUpperCase() === queryCode) || 
+      (r.refCode && r.refCode.toUpperCase() === queryCode)
+    );
+
+    // Query Live Google Sheet gviz API if not found in local JSON
+    if (!found) {
+      try {
+        const sheetId = CONFIG.SPREADSHEET_ID || "1fHLmBIICtzFRmSsMANHo2c6yxS1T7yDW-WPl58szVq4";
+        const gvizUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+        const sheetRes = await fetch(gvizUrl);
+        const text = await sheetRes.text();
+        const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        const gvizData = JSON.parse(jsonText);
+        const rows = (gvizData.table && gvizData.table.rows) || [];
+
+        for (let row of rows) {
+          if (!row || !row.c) continue;
+          const codeCell = row.c[1] ? String(row.c[1].v || '').trim().toUpperCase() : '';
+          if (codeCell === queryCode) {
+            found = {
+              valid: true,
+              schoolCode: codeCell,
+              schoolName: row.c[2] ? String(row.c[2].v || '').trim() : '',
+              teacherName: row.c[7] ? String(row.c[7].v || '').trim() : '',
+              teacherPhone: row.c[8] ? String(row.c[8].v || row.c[8].f || (row.c[9] ? (row.c[9].v || row.c[9].f) : '') || '').trim() : ''
+            };
+            break;
+          }
+        }
+      } catch (err) {
+        console.warn('Server fetch from Google Sheet gviz failed:', err.message);
+      }
+    }
+
+    if (!found) {
+      const preseeded = [
+        { schoolCode: 'SC001', refCode: 'SC001', schoolName: 'D. S. Senanayake College', teacherName: 'Mrs. K. Jayawardena', teacherPhone: '0773456789' },
+        { schoolCode: 'SC002', refCode: 'SC002', schoolName: 'Ananda College, Colombo 10', teacherName: 'Mr. Perera', teacherPhone: '0771234567' },
+        { schoolCode: 'SC003', refCode: 'SC003', schoolName: 'Royal College, Colombo 07', teacherName: 'Mr. N. Fernando', teacherPhone: '0778772765' },
+        { schoolCode: 'SC004', refCode: 'SC004', schoolName: 'Visakha Vidyalaya, Colombo 05', teacherName: 'Mrs. S. Silva', teacherPhone: '0712345678' },
+        { schoolCode: 'SC005', refCode: 'SC005', schoolName: 'Sirimavo Bandaranaike Vidyalaya', teacherName: 'Ms. Thiyamini', teacherPhone: '0782376050' }
+      ];
+      found = preseeded.find(r => 
+        (r.schoolCode && r.schoolCode.toUpperCase() === queryCode) || 
+        (r.refCode && r.refCode.toUpperCase() === queryCode)
+      );
+    }
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    if (found) {
+      res.end(JSON.stringify({
+        valid: true,
+        schoolCode: found.schoolCode || found.refCode,
+        schoolName: found.schoolName,
+        teacherName: found.teacherName,
+        teacherPhone: found.teacherPhone || found.teacherWhatsapp
+      }));
+    } else {
+      res.end(JSON.stringify({
+        valid: false,
+        message: 'School code not found in registered database. You can still proceed if your school is registered.'
+      }));
+    }
+    return;
+  }
+
+  // -------------------------------------------------------------
+  // API ROUTE: POST /api/register-contestants
+  // -------------------------------------------------------------
+  if (req.method === 'POST' && (pathname === '/api/register-contestants' || pathname === '/api/register-contestant')) {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+      if (body.length > 5e6) {
+        res.writeHead(413, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Payload too large' }));
+        req.connection.destroy();
+      }
+    });
+
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        payload.timestamp = payload.timestamp || new Date().toISOString();
+        payload.type = 'contestant';
+
+        const contestantsDB = readJSONFile(CONTESTANTS_FILE);
+        const savedEntries = [];
+        const schoolCodeClean = (payload.schoolCode || 'SC000').toUpperCase();
+
+        const contestantsList = Array.isArray(payload.contestants) ? payload.contestants : [payload];
+
+        contestantsList.forEach((c, index) => {
+          const contestantNum = contestantsDB.length + 1;
+          const regId = `CT-${schoolCodeClean}-${String(contestantNum).padStart(3, '0')}`;
+          const entry = {
+            contestantId: regId,
+            timestamp: payload.timestamp,
+            schoolCode: schoolCodeClean,
+            schoolName: payload.schoolName || '',
+            teacherName: payload.teacherName || '',
+            teacherPhone: payload.teacherPhone || '',
+            fullName: c.fullName || c.name || '',
+            nameWithInitials: c.nameWithInitials || c.shortName || '',
+            grade: c.grade || '',
+            gender: c.gender || '',
+            phone: c.phone || '',
+            whatsapp: c.whatsapp || c.phone || '',
+            email: c.email || '',
+            category: c.category || '',
+            medium: c.medium || 'Sinhala',
+            division: c.division || 'Open',
+            submissionUrl: c.submissionUrl || c.link || ''
+          };
+          contestantsDB.push(entry);
+          savedEntries.push(entry);
+        });
+
+        writeJSONFile(CONTESTANTS_FILE, contestantsDB);
+        console.log(`[DATABASE] Registered ${savedEntries.length} contestants for school ${schoolCodeClean}`);
+
+        // Forward to Google Sheets if configured
+        forwardToGoogleSheet({
+          type: 'contestant',
+          schoolCode: schoolCodeClean,
+          schoolName: payload.schoolName,
+          teacherName: payload.teacherName,
+          contestants: savedEntries
+        }, (err, sheetRes) => {
+          if (err) console.warn('[GOOGLE SHEETS] Contestants forward warning:', err.message);
+        });
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: true,
+          status: 'success',
+          count: savedEntries.length,
+          schoolCode: schoolCodeClean,
+          contestants: savedEntries,
+          message: `Successfully registered ${savedEntries.length} contestant(s) for ${schoolCodeClean}`
+        }));
+      } catch (err) {
+        console.error('Invalid JSON in /api/register-contestants:', err);
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+      }
+    });
+    return;
+  }
+
+  // -------------------------------------------------------------
+  // API ROUTE: GET /api/contestants (Admin / Database Inspection)
+  // -------------------------------------------------------------
+  if (req.method === 'GET' && pathname === '/api/contestants') {
+    const contestants = readJSONFile(CONTESTANTS_FILE);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      count: contestants.length,
+      spreadsheetUrl: CONFIG.SPREADSHEET_URL,
+      contestants: contestants
+    }));
+    return;
+  }
+
 
   // -------------------------------------------------------------
   // API ROUTE: GET /api/registrations (Admin / Database Inspection)

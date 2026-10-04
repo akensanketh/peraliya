@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contestant Registration Portal — Peraliya '26 | Sirimavo Bandaranaike Vidyalaya</title>
+  <meta name="description"
+    content="Official contestant registration portal for Peraliya '26 All-Island Inter-School Media Competition organized by Sisuvisara Media Unit of Sirimavo Bandaranaike Vidyalaya.">
+  <meta name="keywords"
+    content="Peraliya 2026, Contestant Registration, Student Registration, Sirimavo Bandaranaike Vidyalaya, Sisuvisara Media Unit, Inter School Media Competition">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/SBV_MediaUnit_logo.png">
+  <link rel="apple-touch-icon" href="assets/SBV_MediaUnit_logo.png">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .portal-hero {
+      padding: 3.5rem 1rem 2.5rem;
+      background: radial-gradient(circle at 50% 20%, rgba(0, 229, 255, 0.15) 0%, rgba(5, 8, 17, 0.98) 100%);
+      border-bottom: 1px solid var(--border-cyan);
+      text-align: center;
+    }
+
+    .portal-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 5rem;
+    }
+
+    .stepper-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .step-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(4, 7, 15, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .step-badge.active {
+      background: rgba(0, 229, 255, 0.12);
+      border-color: var(--color-cyan);
+      color: var(--color-cyan);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    .step-badge.completed {
+      border-color: #10b981;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+    }
+
+    .step-badge.active .step-num {
+      background: var(--color-cyan);
+      color: #050811;
+    }
+
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-card-item {
+      background: rgba(4, 7, 15, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .info-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid var(--border-cyan);
+      color: var(--color-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .info-card-content h4 {
+      color: #f1f5f9;
+      font-size: 0.92rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-card-content p {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .verify-code-wrap {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-verify-code {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(2, 132, 199, 0.25) 100%);
+      border: 1px solid var(--border-cyan-bright);
+      color: var(--color-cyan);
+      padding: 0 1.2rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .btn-verify-code:hover {
+      background: var(--color-cyan);
+      color: #050811;
+      box-shadow: 0 0 15px var(--color-cyan-glow);
+    }
+
+    .school-verification-status {
+      margin-top: 0.5rem;
+      font-size: 0.84rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .contestant-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .contestant-card-title {
+      font-family: var(--font-heading);
+      color: var(--color-cyan);
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .category-group-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .cat-group-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      color: #86efac;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .cat-group-link-btn:hover {
+      background: #25d366;
+      color: #050811;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .site-header, .site-footer, .ambient-fx-wrap, .grid-overlay, .portal-hero, .stepper-nav, .info-cards-grid, .btn-secondary-glass, .btn-primary-glow { display: none !important; }
+      .modal-backdrop { background: transparent !important; }
+      .modal-card { border: 1px solid #000 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; max-width: 100% !important; }
+      .modal-card * { color: #000 !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ambient Background FX -->
+  <div class="ambient-fx-wrap">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- Site Content Container -->
+  <div class="site-content">
+
+    <!-- Header / Navigation Bar -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="header-brand">
+          <div class="header-logos">
+            <img src="assets/SBV_logo.png" alt="Sirimavo Bandaranaike Vidyalaya" class="brand-crest" width="44"
+              height="44">
+            <img src="assets/SBV_MediaUnit_logo.png" alt="Sisuvisara Media Unit" class="brand-crest" width="44"
+              height="44">
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PERALIYA '26</span>
+            <span class="brand-sinhala">තරගකාරී ලියාපදිංචිය</span>
+            <span class="brand-school">Sirimavo Bandaranaike Vidyalaya</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="index.html#register" class="nav-link">School Registration</a>
+          <a href="contestants.html" class="nav-link active">Contestants</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button type="button" class="btn-audio-toggle" id="audio-toggle-btn" aria-label="Toggle Interface Audio"
+            title="Interface Audio">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <a href="guidelines.html" class="btn-secondary-glass" style="padding: 0.55rem 1.1rem; font-size: 0.88rem; text-decoration: none;">
+            <i class="fa-solid fa-book-open"></i> Rulebook
+          </a>
+          <button type="button" class="hamburger" id="hamburger-btn" aria-label="Open Mobile Menu"
+            aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+      <div class="mobile-nav-links">
+        <a href="index.html">Home</a>
+        <a href="guidelines.html">Rules &amp; Regulations</a>
+        <a href="index.html#register">School Registration</a>
+        <a href="contestants.html">Contestant Registration</a>
+        <a href="index.html#contact">Contact Unit</a>
+      </div>
+    </div>
+
+    <!-- Main Portal Area -->
+    <main>
+      
+      <!-- Hero Banner -->
+      <section class="portal-hero">
+        <div class="container">
+          <div class="hero-tag-badge" style="margin-bottom: 1rem;">
+            <span class="badge-pulse-dot"></span>
+            <span>SISUVISARA MEDIA UNIT • SIRIMAVO BANDARANAIKE VIDYALAYA</span>
+          </div>
+          <h1 class="hero-main-title" style="font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 0.6rem;">
+            CONTESTANT REGISTRATION PORTAL
+          </h1>
+          <p style="color: var(--text-secondary); max-width: 760px; margin-inline: auto; font-size: 1.02rem; line-height: 1.6;">
+            Register individual or team contestants representing your school for <strong>Peraliya '26</strong> All-Island Inter-School Media Competition. Please ensure your school is registered and you hold an official <strong>School Code</strong> (e.g. <code>SC001</code>).
+          </p>
+        </div>
+      </section>
+
+      <!-- Portal Form Container -->
+      <div class="portal-container">
+
+        <!-- Stepper Navigation Header -->
+        <div class="stepper-nav">
+          <div class="step-badge active" id="step-badge-1">
+            <div class="step-num">1</div>
+            <span>School Verification</span>
+          </div>
+          <div style="color: rgba(255, 255, 255, 0.2);"><i class="fa-solid fa-chevron-right"></i></div>
+          <div class="step-badge" id="step-badge-2">
+            <div class="step-num">2</div>
+            <span>Contestants Nomination</span>
+          </div>
+          <div style="color: rgba(255, 255, 255, 0.2);"><i class="fa-solid fa-chevron-right"></i></div>
+          <div class="step-badge" id="step-badge-3">
+            <div class="step-num">3</div>
+            <span>Confirmation &amp; ID Issuance</span>
+          </div>
+        </div>
+
+        <!-- Information Quick Cards -->
+        <div class="info-cards-grid">
+          <div class="info-card-item">
+            <div class="info-card-icon"><i class="fa-solid fa-barcode"></i></div>
+            <div class="info-card-content">
+              <h4>School Code Required</h4>
+              <p>Quote your official School Code (e.g. <code>SC001</code>) issued during institutional registration.</p>
+            </div>
+          </div>
+          <div class="info-card-item">
+            <div class="info-card-icon"><i class="fa-solid fa-user-gear"></i></div>
+            <div class="info-card-content">
+              <h4>Category Quota</h4>
+              <p>Maximum 2 contestants per category per school. Each contestant can participate in 1 category.</p>
+            </div>
+          </div>
+          <div class="info-card-item">
+            <div class="info-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="info-card-content">
+              <h4>Age Eligibility</h4>
+              <p>All participants must be born on or after 31st January 2007 to participate.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Registration Form Card -->
+        <div class="form-card-container">
+          <form id="contestant-registration-form" novalidate>
+
+            <!-- SECTION 1: SCHOOL IDENTIFICATION -->
+            <div class="form-section-block" id="section-school-verification">
+              <h2 class="form-section-title">
+                <i class="fa-solid fa-school"></i>
+                1. School Identification
+              </h2>
+              <p class="form-section-desc">
+                Please enter your official Peraliya '26 School Code and School Name.
+              </p>
+
+              <div class="form-grid">
+                <div class="form-group span-2">
+                  <label for="school-code" class="form-label">
+                    School Code (SC Code) <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="school-code" name="schoolCode" class="form-input"
+                    placeholder="e.g. SC001" style="text-transform: uppercase;" required>
+                </div>
+
+                <div class="form-group span-2">
+                  <label for="school-name" class="form-label">
+                    School Name <span class="required-star">*</span>
+                  </label>
+                  <input type="text" id="school-name" name="schoolName" class="form-input"
+                    placeholder="e.g. Royal College, Colombo / Ananda College" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: DYNAMIC CONTESTANTS NOMINATION -->
+            <div class="form-section-block" id="section-contestants-list">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                <div>
+                  <h2 class="form-section-title" style="margin-bottom: 0.2rem;">
+                    <i class="fa-solid fa-user-pen"></i>
+                    2. Contestants Registration List
+                  </h2>
+                  <p class="form-section-desc" style="margin-bottom: 0;">
+                    Nominate your contestants. You may register single or multiple contestants in one batch.
+                  </p>
+                </div>
+                <div style="background: rgba(0,229,255,0.1); border: 1px solid var(--border-cyan); border-radius: var(--radius-full); padding: 0.35rem 0.9rem; font-size: 0.82rem; color: var(--color-cyan); font-weight: 700;">
+                  <i class="fa-solid fa-users"></i> Batch Total: <span id="contestant-count-badge">1</span> Contestant(s)
+                </div>
+              </div>
+
+              <!-- Dynamic Contestants Wrap -->
+              <div class="contestants-dynamic-wrap" id="contestants-dynamic-container">
+                
+                <!-- Contestant Entry Card (Template / Initial 1) -->
+                <div class="contestant-entry-card" data-index="0">
+                  <div class="contestant-card-header">
+                    <span class="contestant-card-title">
+                      <i class="fa-solid fa-id-card"></i> Contestant #1
+                    </span>
+                    <button type="button" class="btn-remove-contestant" title="Remove Contestant" style="display: none;" onclick="removeContestantCard(this)">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+
+                  <div class="form-grid">
+                    <div class="form-group span-2">
+                      <label class="form-label">Full Name of Contestant <span class="required-star">*</span></label>
+                      <input type="text" name="contestant_fullName_0" class="form-input contestant-fullname" placeholder="e.g. Kavinga Dulshan Perera" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Name with Initials <span class="required-star">*</span></label>
+                      <input type="text" name="contestant_shortName_0" class="form-input contestant-shortname" placeholder="e.g. K. D. Perera" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Grade / Class <span class="required-star">*</span></label>
+                      <select name="contestant_grade_0" class="form-select contestant-grade" required>
+                        <option value="">-- Select Grade --</option>
+                        <option value="Grade 6">Grade 6</option>
+                        <option value="Grade 7">Grade 7</option>
+                        <option value="Grade 8">Grade 8</option>
+                        <option value="Grade 9">Grade 9</option>
+                        <option value="Grade 10">Grade 10</option>
+                        <option value="Grade 11">Grade 11</option>
+                        <option value="Grade 12">Grade 12</option>
+                        <option value="Grade 13">Grade 13</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Student Phone / WhatsApp <span class="required-star">*</span></label>
+                      <input type="tel" name="contestant_phone_0" class="form-input contestant-phone" placeholder="e.g. 0771234567" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Contestant Email Address</label>
+                      <input type="email" name="contestant_email_0" class="form-input contestant-email" placeholder="e.g. kavinga@gmail.com">
+                    </div>
+
+                    <div class="form-group span-2">
+                      <label class="form-label">Competition Category <span class="required-star">*</span></label>
+                      <select name="contestant_category_0" class="form-select contestant-category" required onchange="updateDivisionOptions(this)">
+                        <option value="">-- Select Competition Category --</option>
+                        <option value="News Presenting">News Presenting (ප්‍රවෘත්ති නිවේදනය)</option>
+                        <option value="News Editing">News Editing (පුවත් සංස්කරණය)</option>
+                        <option value="Program Presenting">Program Presenting (වැඩසටහන් ඉදිරිපත් කිරීම)</option>
+                        <option value="Dubbing">Dubbing (හඬකැවීම්)</option>
+                        <option value="Sports Commentary">Sports Commentary (ක්‍රීඩා විස්තර විචාරය)</option>
+                        <option value="Cartoon Drawing">Cartoon Drawing (කාටූන් ඇඳීම)</option>
+                        <option value="Photography">Photography (ඡායාරූපකරණය)</option>
+                        <option value="Videography">Videography (වීඩියෝකරණය)</option>
+                        <option value="Technical">Technical (තාක්ෂණික)</option>
+                        <option value="Graphic Designing">Graphic Designing (ප්‍රස්ථාරික නිර්මාණකරණය)</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Language Medium <span class="required-star">*</span></label>
+                      <select name="contestant_medium_0" class="form-select contestant-medium" required>
+                        <option value="">-- Select Language Medium --</option>
+                        <option value="Sinhala">Sinhala (සිංහල)</option>
+                        <option value="English">English</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label">Division / Age Tier <span class="required-star">*</span></label>
+                      <select name="contestant_division_0" class="form-select contestant-division" required>
+                        <option value="Junior">Junior (Grades 6 - 8 / 9)</option>
+                        <option value="Intermediate">Intermediate (Grades 9 - 11)</option>
+                        <option value="Senior">Senior (Grades 12 - 13)</option>
+                        <option value="Open">Open Category</option>
+                      </select>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Add Another Contestant Button -->
+              <button type="button" class="btn-add-contestant" id="btn-add-contestant">
+                <i class="fa-solid fa-plus-circle"></i> Add Another Contestant to Batch
+              </button>
+            </div>
+
+
+
+            <!-- Submit Button Bar -->
+            <div class="form-nav-buttons" style="justify-content: flex-end;">
+              <button type="submit" class="btn-primary-glow" id="btn-submit-contestants" style="padding: 0.95rem 2.2rem; font-size: 1rem;">
+                <i class="fa-solid fa-paper-plane"></i> Submit Contestants Registration
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="background: rgba(4, 7, 15, 0.95); border-top: 1px solid var(--border-cyan); padding: 3rem 1rem; text-align: center; margin-top: 4rem;">
+      <div class="container">
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+          <img src="assets/SBV_logo.png" alt="SBV Crest" width="36" height="36">
+          <img src="assets/SBV_MediaUnit_logo.png" alt="Media Unit Crest" width="36" height="36">
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.5rem;">
+          Peraliya '26 — Sisuvisara Media Unit, Sirimavo Bandaranaike Vidyalaya, Colombo 07.
+        </p>
+        <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.78rem;">
+          &copy; 2026 Sisuvisara Media Unit. All Rights Reserved.
+        </p>
+        <p class="footer-credit" style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem; letter-spacing: 0.5px;">
+          Designed and developed by <span style="color: var(--color-cyan); font-weight: 700;">Aken Sanketh</span>
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- SUCCESS CONFIRMATION MODAL -->
+  <div id="contestants-success-modal" class="modal-backdrop" aria-hidden="true" style="display: none; position: fixed; inset: 0; background: rgba(2, 4, 10, 0.88); backdrop-filter: blur(16px); z-index: 9999; align-items: center; justify-content: center; padding: 1.5rem; overflow-y: auto;">
+    <div class="modal-card" style="background: #060c1a; border: 1px solid var(--border-cyan); border-radius: var(--radius-lg); max-width: 720px; width: 100%; padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: 0 0 50px rgba(0, 229, 255, 0.25); position: relative;">
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(0,229,255,0.15); border: 2px solid var(--color-cyan); color: var(--color-cyan); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 1rem; box-shadow: 0 0 25px var(--color-cyan-glow);">
+          <i class="fa-solid fa-user-check"></i>
+        </div>
+        <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 0.3rem;">
+          CONTESTANT REGISTRATION SUCCESSFUL!
+        </h3>
+        <p style="color: #94a3b8; font-size: 0.92rem;">
+          Contestants have been registered for <strong id="modal-school-display">Peraliya '26</strong>.
+        </p>
+      </div>
+
+      <!-- Registration Summary Table -->
+      <div style="background: rgba(4,7,15,0.85); border: 1px dashed var(--border-cyan); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; max-height: 240px; overflow-y: auto;">
+        <div style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 0.75rem; border-bottom: 1px solid rgba(56,189,248,0.2); padding-bottom: 0.4rem; display: flex; justify-content: space-between;">
+          <span>Contestant Ref ID &amp; Name</span>
+          <span>Category &amp; Medium</span>
+        </div>
+        <div id="modal-contestants-list">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Category WhatsApp Groups Notice -->
+      <div style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.35); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="font-size: 0.95rem; font-weight: 700; color: #86efac; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem; color: #25d366;"></i>
+          <span>Official Contestants Category WhatsApp Groups</span>
+        </div>
+        <p style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 0.75rem;">
+          Contestants must join their respective Category WhatsApp group to receive scripts, submission links, time slots, and competition announcements:
+        </p>
+        <div class="category-group-links" id="modal-whatsapp-links">
+          <a href="https://chat.whatsapp.com/KbjkcNu6pmpCbvDxAJhKCp" target="_blank" class="cat-group-link-btn">
+            <i class="fa-brands fa-whatsapp"></i> General Contestants Group
+          </a>
+        </div>
+      </div>
+
+      <!-- Modal Action Buttons -->
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <button type="button" class="btn-secondary-glass" onclick="window.print()" style="padding: 0.7rem 1.4rem;">
+          <i class="fa-solid fa-print"></i> Print Confirmation Slip
+        </button>
+        <button type="button" class="btn-primary-glow" onclick="closeContestantModal()" style="padding: 0.7rem 2rem;">
+          <i class="fa-solid fa-check"></i> Done &amp; Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script>
+    // Audio Sound Effects Synthesizer (Matching app.js Web Audio API)
+    const AudioFX = {
+      ctx: null,
+      init() {
+        if (!this.ctx && typeof (window.AudioContext || window.webkitAudioContext) !== 'undefined') {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      },
+      playClick() {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(400, this.ctx.currentTime + 0.05);
+          gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.05);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.05);
+        } catch (e) {}
+      },
+      playSuccess() {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          const now = this.ctx.currentTime;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+          osc.frequency.setValueAtTime(1046.50, now + 0.3); // C6
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.5);
+        } catch (e) {}
+      }
+    };
+
+    let cardCount = 1;
+
+    // Verify & Auto-fill School Code Function
+    async function verifyAndAutofillSchoolCode(codeToVerify) {
+      const codeInput = document.getElementById('school-code');
+      const codeVal = (codeToVerify || codeInput.value).trim();
+      const statusDiv = document.getElementById('school-verify-status');
+
+      if (!codeVal) {
+        statusDiv.innerHTML = '<span style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Please enter a School Code first.</span>';
+        return;
+      }
+
+      codeInput.value = codeVal.toUpperCase();
+      statusDiv.innerHTML = '<span style="color: var(--color-cyan);"><i class="fa-solid fa-spinner fa-spin"></i> Verifying code with database...</span>';
+
+      let foundSchool = null;
+
+      // 1. Direct Live Google Sheet CSV Fetch (Natively supports CORS Access-Control-Allow-Origin: *)
+      try {
+        const sheetId = typeof CONFIG !== 'undefined' && CONFIG.SPREADSHEET_ID ? CONFIG.SPREADSHEET_ID : "1fHLmBIICtzFRmSsMANHo2c6yxS1T7yDW-WPl58szVq4";
+        const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
+        const csvRes = await fetch(csvUrl);
+        if (csvRes.ok) {
+          const csvText = await csvRes.text();
+          
+          // CSV Parser
+          const parseCSVLines = (text) => {
+            const rows = [];
+            let row = [''];
+            let inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+              const c = text[i];
+              const next = text[i+1];
+              if (c === '"') {
+                if (inQuotes && next === '"') { row[row.length - 1] += '"'; i++; }
+                else { inQuotes = !inQuotes; }
+              } else if (c === ',' && !inQuotes) {
+                row.push('');
+              } else if ((c === '\r' || c === '\n') && !inQuotes) {
+                if (c === '\r' && next === '\n') i++;
+                rows.push(row);
+                row = [''];
+              } else {
+                row[row.length - 1] += c;
+              }
+            }
+            if (row.length > 1 || row[0] !== '') rows.push(row);
+            return rows;
+          };
+
+          const rows = parseCSVLines(csvText);
+          const targetCode = codeVal.toUpperCase();
+
+          for (let r of rows) {
+            const codeInRow = (r[1] || '').trim().toUpperCase();
+            if (codeInRow === targetCode) {
+              foundSchool = {
+                valid: true,
+                schoolCode: codeInRow,
+                schoolName: (r[2] || '').trim(),
+                teacherName: (r[7] || '').trim(),
+                teacherPhone: (r[8] || r[9] || '').trim()
+              };
+              break;
+            }
+          }
+        }
+      } catch (csvErr) {
+        console.warn('Google Sheet CSV direct lookup error:', csvErr);
+      }
+
+      // 2. Try Local Node Server API
+      if (!foundSchool) {
+        try {
+          const res = await fetch(`/api/verify-school-code?code=${encodeURIComponent(codeVal)}`);
+          const data = await res.json();
+          if (data.valid && data.schoolName) {
+            foundSchool = data;
+          }
+        } catch (err) {
+          console.warn('Local API verify call failed:', err);
+        }
+      }
+
+      // 3. Check Google Sheet Apps Script Web App endpoint if needed
+      if (!foundSchool && typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_WEBAPP_URL) {
+        try {
+          const sheetRes = await fetch(`${CONFIG.GOOGLE_SHEET_WEBAPP_URL}?code=${encodeURIComponent(codeVal)}`);
+          const sheetData = await sheetRes.json();
+          if (sheetData.valid && sheetData.schoolName) {
+            foundSchool = sheetData;
+          }
+        } catch (err) {
+          console.warn('Google Sheet Apps Script verification lookup failed:', err);
+        }
+      }
+
+      // Fallback check in pre-seeded database & browser localStorage history if API didn't return
+      if (!foundSchool) {
+        const preseededSchools = [
+          { schoolCode: 'SC001', refCode: 'SC001', schoolName: 'D. S. Senanayake College', teacherName: 'Mrs. K. Jayawardena', teacherPhone: '0773456789' },
+          { schoolCode: 'SC002', refCode: 'SC002', schoolName: 'Ananda College, Colombo 10', teacherName: 'Mr. Perera', teacherPhone: '0771234567' },
+          { schoolCode: 'SC003', refCode: 'SC003', schoolName: 'Royal College, Colombo 07', teacherName: 'Mr. N. Fernando', teacherPhone: '0778772765' },
+          { schoolCode: 'SC004', refCode: 'SC004', schoolName: 'Visakha Vidyalaya, Colombo 05', teacherName: 'Mrs. S. Silva', teacherPhone: '0712345678' },
+          { schoolCode: 'SC005', refCode: 'SC005', schoolName: 'Sirimavo Bandaranaike Vidyalaya', teacherName: 'Ms. Thiyamini', teacherPhone: '0782376050' }
+        ];
+
+        try {
+          const localRegs = JSON.parse(localStorage.getItem('peraliya_school_registrations') || '[]');
+          const combinedList = [...localRegs, ...preseededSchools];
+
+          const match = combinedList.find(r => 
+            (r.schoolCode && r.schoolCode.toUpperCase() === codeVal.toUpperCase()) ||
+            (r.refCode && r.refCode.toUpperCase() === codeVal.toUpperCase())
+          );
+          if (match) {
+            foundSchool = {
+              valid: true,
+              schoolCode: match.schoolCode || match.refCode,
+              schoolName: match.schoolName || match.school,
+              teacherName: match.teacherName || '',
+              teacherPhone: match.teacherPhone || match.teacherWhatsapp || ''
+            };
+          }
+        } catch(e) {}
+      }
+
+      const nameField = document.getElementById('school-name');
+
+      if (foundSchool && foundSchool.schoolName) {
+        if (!nameField.value) {
+          nameField.value = foundSchool.schoolName;
+          nameField.style.transition = 'all 0.4s ease';
+          nameField.style.borderColor = 'var(--color-cyan)';
+          nameField.style.boxShadow = '0 0 15px rgba(0, 229, 255, 0.4)';
+          setTimeout(() => { nameField.style.boxShadow = ''; }, 2500);
+        }
+      }
+    }
+
+    // Auto-fill school name when School Code input changes or loses focus
+    document.getElementById('school-code').addEventListener('blur', function() {
+      verifyAndAutofillSchoolCode();
+    });
+
+    // Auto-verify if code exists in URL parameters or recent browser registration
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramCode = urlParams.get('code') || urlParams.get('schoolCode') || localStorage.getItem('peraliya_last_registered_code');
+
+      if (paramCode) {
+        document.getElementById('school-code').value = paramCode.toUpperCase();
+        verifyAndAutofillSchoolCode(paramCode);
+      }
+    });
+
+    // Add Contestant Card
+    document.getElementById('btn-add-contestant').addEventListener('click', function() {
+      AudioFX.playClick();
+      const container = document.getElementById('contestants-dynamic-container');
+      const idx = cardCount;
+      cardCount++;
+
+      const newCard = document.createElement('div');
+      newCard.className = 'contestant-entry-card';
+      newCard.setAttribute('data-index', idx);
+      newCard.innerHTML = `
+        <div class="contestant-card-header">
+          <span class="contestant-card-title">
+            <i class="fa-solid fa-id-card"></i> Contestant #${idx + 1}
+          </span>
+          <button type="button" class="btn-remove-contestant" title="Remove Contestant" onclick="removeContestantCard(this)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label class="form-label">Full Name of Contestant <span class="required-star">*</span></label>
+            <input type="text" name="contestant_fullName_${idx}" class="form-input contestant-fullname" placeholder="e.g. Contestant Full Name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Name with Initials <span class="required-star">*</span></label>
+            <input type="text" name="contestant_shortName_${idx}" class="form-input contestant-shortname" placeholder="e.g. K. D. Perera" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Grade / Class <span class="required-star">*</span></label>
+            <select name="contestant_grade_${idx}" class="form-select contestant-grade" required>
+              <option value="">-- Select Grade --</option>
+              <option value="Grade 6">Grade 6</option>
+              <option value="Grade 7">Grade 7</option>
+              <option value="Grade 8">Grade 8</option>
+              <option value="Grade 9">Grade 9</option>
+              <option value="Grade 10">Grade 10</option>
+              <option value="Grade 11">Grade 11</option>
+              <option value="Grade 12">Grade 12</option>
+              <option value="Grade 13">Grade 13</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Student Phone / WhatsApp <span class="required-star">*</span></label>
+            <input type="tel" name="contestant_phone_${idx}" class="form-input contestant-phone" placeholder="e.g. 0771234567" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contestant Email Address</label>
+            <input type="email" name="contestant_email_${idx}" class="form-input contestant-email" placeholder="e.g. contestant@gmail.com">
+          </div>
+
+          <div class="form-group span-2">
+            <label class="form-label">Competition Category <span class="required-star">*</span></label>
+            <select name="contestant_category_${idx}" class="form-select contestant-category" required onchange="updateDivisionOptions(this)">
+              <option value="">-- Select Competition Category --</option>
+              <option value="News Presenting">News Presenting (ප්‍රවෘත්ති නිවේදනය)</option>
+              <option value="News Editing">News Editing (පුවත් සංස්කරණය)</option>
+              <option value="Program Presenting">Program Presenting (වැඩසටහන් ඉදිරිපත් කිරීම)</option>
+              <option value="Dubbing">Dubbing (හඬකැවීම්)</option>
+              <option value="Sports Commentary">Sports Commentary (ක්‍රීඩා විස්තර විචාරය)</option>
+              <option value="Cartoon Drawing">Cartoon Drawing (කාටූන් ඇඳීම)</option>
+              <option value="Photography">Photography (ඡායාරූපකරණය)</option>
+              <option value="Videography">Videography (වීඩියෝකරණය)</option>
+              <option value="Technical">Technical (තාක්ෂණික)</option>
+              <option value="Graphic Designing">Graphic Designing (ප්‍රස්ථාරික නිර්මාණකරණය)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Language Medium <span class="required-star">*</span></label>
+            <select name="contestant_medium_${idx}" class="form-select contestant-medium" required>
+              <option value="">-- Select Language Medium --</option>
+              <option value="Sinhala">Sinhala (සිංහල)</option>
+              <option value="English">English</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Division / Age Tier <span class="required-star">*</span></label>
+            <select name="contestant_division_${idx}" class="form-select contestant-division" required>
+              <option value="Junior">Junior (Grades 6 - 8 / 9)</option>
+              <option value="Intermediate">Intermediate (Grades 9 - 11)</option>
+              <option value="Senior">Senior (Grades 12 - 13)</option>
+              <option value="Open">Open Category</option>
+            </select>
+          </div>
+
+
+        </div>
+      `;
+
+      container.appendChild(newCard);
+      updateContestantCount();
+      updateRemoveButtons();
+    });
+
+    function removeContestantCard(btn) {
+      AudioFX.playClick();
+      const card = btn.closest('.contestant-entry-card');
+      if (card) {
+        card.remove();
+        updateContestantCount();
+        updateRemoveButtons();
+      }
+    }
+
+    function updateRemoveButtons() {
+      const cards = document.querySelectorAll('.contestant-entry-card');
+      cards.forEach((card, index) => {
+        const removeBtn = card.querySelector('.btn-remove-contestant');
+        if (removeBtn) {
+          removeBtn.style.display = cards.length > 1 ? 'flex' : 'none';
+        }
+        const titleSpan = card.querySelector('.contestant-card-title');
+        if (titleSpan) {
+          titleSpan.innerHTML = `<i class="fa-solid fa-id-card"></i> Contestant #${index + 1}`;
+        }
+      });
+    }
+
+    function updateContestantCount() {
+      const cards = document.querySelectorAll('.contestant-entry-card');
+      document.getElementById('contestant-count-badge').innerText = cards.length;
+    }
+
+    function updateDivisionOptions(selectEl) {
+      const card = selectEl.closest('.contestant-entry-card');
+      if (!card) return;
+      const divSelect = card.querySelector('.contestant-division');
+      const cat = selectEl.value;
+
+      const openCategories = [
+        'Sports Commentary',
+        'Cartoon Drawing',
+        'Photography',
+        'Videography',
+        'Technical',
+        'Technical Paper',
+        'Graphic Designing'
+      ];
+
+      if (openCategories.includes(cat)) {
+        divSelect.innerHTML = `<option value="Open" selected>Open Category</option>`;
+      } else if (cat === 'Dubbing') {
+        divSelect.innerHTML = `
+          <option value="">-- Select Division --</option>
+          <option value="Junior">Junior (Grades 6 - 9)</option>
+          <option value="Senior">Senior (Grades 10 - 13)</option>
+        `;
+      } else if (cat === 'News Presenting' || cat === 'News Editing' || cat === 'Program Presenting') {
+        divSelect.innerHTML = `
+          <option value="">-- Select Division --</option>
+          <option value="Junior">Junior (Grades 6 - 8)</option>
+          <option value="Intermediate">Intermediate (Grades 9 - 11)</option>
+          <option value="Senior">Senior (Grades 12 - 13)</option>
+        `;
+      } else {
+        divSelect.innerHTML = `
+          <option value="">-- Select Division --</option>
+          <option value="Junior">Junior</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Senior">Senior</option>
+          <option value="Open">Open Category</option>
+        `;
+      }
+    }
+
+    // Form Submission Handler
+    document.getElementById('contestant-registration-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      AudioFX.playClick();
+
+      const schoolCode = document.getElementById('school-code').value.trim();
+      const schoolName = document.getElementById('school-name').value.trim();
+
+      if (!schoolCode || !schoolName) {
+        alert('Please fill out all required school identification fields.');
+        return;
+      }
+
+      const cardElements = document.querySelectorAll('.contestant-entry-card');
+      const contestants = [];
+
+      for (let card of cardElements) {
+        const fullName = card.querySelector('.contestant-fullname').value.trim();
+        const shortName = card.querySelector('.contestant-shortname').value.trim();
+        const grade = card.querySelector('.contestant-grade').value;
+        const phone = card.querySelector('.contestant-phone').value.trim();
+        const email = card.querySelector('.contestant-email').value.trim();
+        const category = card.querySelector('.contestant-category').value;
+        const medium = card.querySelector('.contestant-medium').value;
+        const division = card.querySelector('.contestant-division').value;
+
+        if (!fullName || !shortName || !grade || !phone || !category) {
+          alert('Please fill out all required fields for every contestant card.');
+          return;
+        }
+
+        contestants.push({
+          fullName,
+          nameWithInitials: shortName,
+          grade,
+          phone,
+          email,
+          category,
+          medium,
+          division
+        });
+      }
+
+      const submitBtn = document.getElementById('btn-submit-contestants');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Registrations...';
+
+      const payload = {
+        type: 'contestant',
+        schoolCode,
+        schoolName,
+        contestants
+      };
+
+      let registrationSuccess = false;
+      let returnedContestants = null;
+
+      // 1. Submit to Local Node API Backend (/api/register-contestants)
+      try {
+        const res = await fetch('/api/register-contestants', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success || data.status === 'success') {
+          registrationSuccess = true;
+          returnedContestants = data.contestants;
+        }
+      } catch (err) {
+        console.warn('Local Node server unavailable, submitting to Google Sheets Web App:', err);
+      }
+
+      // 2. Submit to Google Sheets Database Web App Endpoint
+      if (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_WEBAPP_URL) {
+        try {
+          await fetch(CONFIG.GOOGLE_SHEET_WEBAPP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          registrationSuccess = true;
+        } catch (sheetErr) {
+          console.warn('Direct Google Sheet submission error:', sheetErr);
+        }
+      }
+
+      // 3. Save entry in local browser storage backup
+      try {
+        const existingLocal = JSON.parse(localStorage.getItem('peraliya_contestant_registrations') || '[]');
+        existingLocal.push({
+          timestamp: new Date().toISOString(),
+          schoolCode,
+          schoolName,
+          contestants
+        });
+        localStorage.setItem('peraliya_contestant_registrations', JSON.stringify(existingLocal));
+      } catch (e) {}
+
+      AudioFX.playSuccess();
+      const finalContestantsList = returnedContestants || contestants.map((c, idx) => ({
+        ...c,
+        contestantId: `CT-${schoolCode.toUpperCase()}-${String(idx + 1).padStart(3, '0')}`
+      }));
+      showSuccessModal(schoolName, finalContestantsList, schoolCode);
+      
+      // Make button unclickable & display 'Submitted Successfully'
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      submitBtn.style.cursor = 'not-allowed';
+      submitBtn.style.pointerEvents = 'none';
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Submitted Successfully';
+    });
+
+    function showSuccessModal(schoolName, contestantsList, schoolCode) {
+      document.getElementById('modal-school-display').innerText = `${schoolName} (${schoolCode.toUpperCase()})`;
+      
+      const listContainer = document.getElementById('modal-contestants-list');
+      listContainer.innerHTML = '';
+
+      contestantsList.forEach(c => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px rgba(255,255,255,0.06) solid; font-size: 0.9rem;';
+        row.innerHTML = `
+          <div>
+            <div style="font-weight: 700; color: var(--color-cyan); font-family: var(--font-mono);">${c.contestantId || 'CT-' + schoolCode.toUpperCase()}</div>
+            <div style="color: #f1f5f9; font-weight: 600;">${c.fullName || c.nameWithInitials}</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="color: #cbd5e1; font-weight: 600;">${c.category}</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">${c.medium} • ${c.division}</div>
+          </div>
+        `;
+        listContainer.appendChild(row);
+      });
+
+      const modal = document.getElementById('contestants-success-modal');
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+
+      document.getElementById('step-badge-2').classList.add('completed');
+      document.getElementById('step-badge-3').classList.add('active');
+    }
+
+    function closeContestantModal() {
+      AudioFX.playClick();
+      const modal = document.getElementById('contestants-success-modal');
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('contestant-registration-form').reset();
+
+      const submitBtn = document.getElementById('btn-submit-contestants');
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '';
+      submitBtn.style.cursor = '';
+      submitBtn.style.pointerEvents = '';
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Submit Contestants Registration';
+    }
+
+    // Toggle Mobile Nav
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (hamburgerBtn && mobileNav) {
+      hamburgerBtn.addEventListener('click', function() {
+        const open = mobileNav.classList.toggle('active');
+        hamburgerBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -9,51 +9,68 @@
 // Category Data Repository
 const CATEGORIES_DATA = [
   {
-    id: 'announcing',
-    title: 'Announcing & News Reading',
-    sinhala: 'ප්‍රවෘත්ති නිවේදන හා ප්‍රකාශන',
+    id: 'news-presenting',
+    title: 'News Presenting',
+    sinhala: 'ප්‍රවෘත්ති නිවේදනය',
     type: 'broadcasting',
-    mode: 'Onsite',
+    mode: 'Onsite / Submission',
     languages: 'Sinhala, English',
     ageGroup: 'Junior (Gr. 6-8), Intermediate (Gr. 9-11), Senior (Gr. 12-13)',
     icon: 'fa-solid fa-microphone-lines',
     summary: 'Mastery of vocal projection, diction, poise, modulation, and teleprompter style live news presentation.',
     guidelines: [
-      'Contestants will be provided a scripted news bulletin 15 minutes prior to live reading.',
-      'Evaluation criteria: Pronunciation, voice control, pacing, posture, and studio composure.',
-      'Medium: Sinhala and English categories will be evaluated independently.',
-      'Time duration: 2 - 3 minutes per contestant.'
+      'Participants deliver a news report, live report, and documentary segment based on official scripts.',
+      'Evaluation criteria: Pronunciation, voice control, pacing, posture, and composure.',
+      'Medium: Sinhala and English categories evaluated independently.',
+      'Format: Single continuous unedited video (4–5 mins).'
     ]
   },
   {
-    id: 'news-reporting',
-    title: 'Field News Reporting',
-    sinhala: 'ක්ෂේත්‍ර පුවත් වාර්තාකරණය',
+    id: 'news-editing',
+    title: 'News Editing',
+    sinhala: 'පුවත් සංස්කරණය',
     type: 'journalism',
-    mode: 'Onsite',
+    mode: 'Onsite / Online',
     languages: 'Sinhala, English',
-    ageGroup: 'Intermediate & Senior',
+    ageGroup: 'Junior (Gr. 6-8), Intermediate (Gr. 9-11), Senior (Gr. 12-13)',
     icon: 'fa-solid fa-newspaper',
-    summary: 'Fast-paced investigative journalism, breaking news live coverage simulation, and field standup reporting.',
+    summary: 'Print journalism, headline synthesis, copyediting, structure, and editorial precision.',
     guidelines: [
-      'Scenario-based breaking news reporting within a simulated disaster or cultural event.',
-      'Contestants must craft their own news lead and conduct a 2-minute live standup report.',
-      'Assessed on objectivity, news gathering technique, confidence, and linguistic finesse.'
+      'Timed Window: Junior (2 hours), Intermediate & Senior (3 hours).',
+      'All answers must be handwritten clearly and submitted as a single PDF.',
+      'No AI tools permitted.'
     ]
   },
   {
     id: 'program-presenting',
-    title: 'Program Presenting & Hosting',
+    title: 'Program Presenting',
     sinhala: 'වැඩසටහන් ඉදිරිපත් කිරීම',
     type: 'broadcasting',
-    mode: 'Onsite',
+    mode: 'Onsite / Submission',
     languages: 'Sinhala, English',
-    ageGroup: 'Junior & Senior',
-    icon: 'fa-solid fa-headset',
-    summary: 'Hosting television & digital talk shows, morning shows, or cultural feature broadcasts with charismatic audience engagement.',
+    ageGroup: 'Junior (Gr. 6-8), Intermediate (Gr. 9-11), Senior (Gr. 12-13)',
+    icon: 'fa-solid fa-bullhorn',
+    summary: 'Hosting television & digital talk shows, feature broadcasts, and engaging audience presentations.',
     guidelines: [
-      'Contestants present a 3-minute segment of an entertainment or youth educational program.',
-      'Spontaneity, humor, audience connection, and body language are key criteria.'
+      'Contestants present segments provided in the official script.',
+      'Assessed on spontaneity, body language, tone, and audience engagement.',
+      'Format: Single continuous unedited video (4–5 mins).'
+    ]
+  },
+  {
+    id: 'dubbing',
+    title: 'Dubbing',
+    sinhala: 'හඬකැවීම්',
+    type: 'broadcasting',
+    mode: 'Submission',
+    languages: 'Sinhala, English',
+    ageGroup: 'Junior (Gr. 6-9), Senior (Gr. 10-13)',
+    icon: 'fa-solid fa-microphone',
+    summary: 'Synchronization of voice acting with on-screen animated or live-action clips.',
+    guidelines: [
+      'Contestants select one of two provided video clips for dubbing.',
+      'Both contestant (in uniform) and video clip must be visible.',
+      'Assessed on lip-sync precision, pitch control, and character vocalization.'
     ]
   },
   {
@@ -61,140 +78,92 @@ const CATEGORIES_DATA = [
     title: 'Sports Commentary',
     sinhala: 'ක්‍රීඩා විස්තර විචාරය',
     type: 'broadcasting',
-    mode: 'Onsite',
+    mode: 'Submission',
     languages: 'Sinhala, English',
-    ageGroup: 'Junior, Intermediate, Senior',
+    ageGroup: 'Open Category',
     icon: 'fa-solid fa-trophy',
-    summary: 'High-adrenaline, real-time commentary of live sporting clips (Cricket, Football, Athletics, Rugby).',
+    summary: 'High-adrenaline, real-time commentary of live sporting clips (Cricket, Football, Rugby).',
     guidelines: [
-      'Contestants will be played a 2-minute silent match video clip on screen.',
-      'Deliver real-time ball-by-ball or play-by-play commentary with accurate terminology.',
-      'Pacing, excitement, analytical insight, and voice clarity are strictly evaluated.'
+      'Deliver real-time commentary based on designated match clips.',
+      'Evaluated on pacing, excitement, accurate terminology, and voice clarity.'
     ]
   },
   {
-    id: 'dubbing',
-    title: 'Dubbing & Voice Acting',
-    sinhala: 'හඬකැවීම් හා චරිතාංග නිරූපණය',
-    type: 'broadcasting',
-    mode: 'Onsite',
+    id: 'cartoon-drawing',
+    title: 'Cartoon Drawing',
+    sinhala: 'කාටූන් ඇඳීම',
+    type: 'visual',
+    mode: 'Submission',
     languages: 'Sinhala, English',
-    ageGroup: 'Open (Grades 6 - 13)',
-    icon: 'fa-solid fa-masks-theater',
-    summary: 'Synchronization of voice acting with on-screen animated or live-action cinematic characters.',
+    ageGroup: 'Open Category',
+    icon: 'fa-solid fa-pencil',
+    summary: 'Illustrative storytelling, satirical cartooning, and graphic sketch messaging.',
     guidelines: [
-      'Muted video snippet will be provided to contestant with rehearsal time.',
-      'Lip-sync precision, emotional inflection, character adaptation, and pitch control will be judged.'
+      'Topics communicated via official channels.',
+      'Completed on A4 paper using drawing pencils and black pens (no colors).',
+      'Upload high-quality photograph of completed artwork.'
     ]
   },
   {
     id: 'photography',
-    title: 'Photography & Photojournalism',
-    sinhala: 'ඡායාරූපකරණය (තේමාත්මක)',
+    title: 'Photography',
+    sinhala: 'ඡායාරූපකරණය',
     type: 'visual',
     mode: 'Online',
-    languages: 'N/A',
-    ageGroup: 'Junior (Concept) & Senior (Photo Story)',
+    languages: 'Sinhala, English',
+    ageGroup: 'Open Category',
     icon: 'fa-solid fa-camera',
-    summary: 'Visual storytelling capturing raw human emotion, urban life, conservation, or youth transformation.',
+    summary: 'Visual storytelling capturing raw human emotion, environment, and thematic perspectives.',
     guidelines: [
-      'Theme: "Resilience & Metamorphosis / පෙරළියක ඇරඹුම".',
-      'Submissions must be original RAW/JPEG with EXIF data intact.',
-      'Maximum 3 submissions per contestant. Light color correction allowed; generative AI tampering strictly prohibited.',
-      'Deadline: Submit via Google Drive link before online deadline.'
+      'Subcategories: Colour, Monochrome, Mobile Photography.',
+      'Maximum 3 photos per subcategory (max file size 20MB per photo).',
+      'No watermarks or AI manipulation allowed.'
     ]
   },
   {
-    id: 'short-film',
-    title: 'Short Film & Cinematography',
-    sinhala: 'කෙටි චිත්‍රපට නිර්මාණය',
+    id: 'videography',
+    title: 'Videography',
+    sinhala: 'වීඩියෝකරණය',
     type: 'visual',
     mode: 'Online',
-    languages: 'Sinhala, English (Subtitles encouraged)',
-    ageGroup: 'Open (Max 5-member school crew)',
+    languages: 'Sinhala, English',
+    ageGroup: 'Open Category',
     icon: 'fa-solid fa-film',
-    summary: 'Creative direction, cinematography, screenwriting, and sound design encapsulated in a short film.',
+    summary: 'Cinematic video storytelling, camera movement, composition, and visual narrative.',
     guidelines: [
-      'Duration: 3 to 7 minutes (including credits).',
-      'Resolution: 1080p Full HD or 4K, uploaded via Google Drive / YouTube unlisted link.',
-      'Evaluated on screenplay originality, camera work, color grading, sound mixing, and message delivery.'
+      'Duration: 60 seconds to 2 minutes.',
+      'Must submit final video and original raw footage.',
+      'No pre-existing or AI footage. Drone cameras prohibited.'
     ]
   },
   {
-    id: 'ai-film',
-    title: 'AI Short Film & Generative Story',
-    sinhala: 'කෘතිම බුද්ධි නිර්මාණ (AI Cinema)',
+    id: 'technical',
+    title: 'Technical',
+    sinhala: 'තාක්ෂණික',
     type: 'digital',
     mode: 'Online',
-    languages: 'Bilingual (Sinhala / English) / International',
+    languages: 'Sinhala, English',
     ageGroup: 'Open Category',
-    icon: 'fa-solid fa-wand-magic-sparkles',
-    summary: 'Pioneering generative AI workflows combining cutting-edge text-to-video, generative audio, and futuristic concepts.',
+    icon: 'fa-solid fa-microchip',
+    summary: 'Broadcasting technology, media engineering, equipment knowledge, and technical aptitude.',
     guidelines: [
-      'Duration: 2 to 4 minutes.',
-      'Contestants must submit a "Prompt & Workflow Manifesto" detailing tools used (e.g. Midjourney, Runway, Luma, ElevenLabs).',
-      'Art direction, coherence of story arc, and ethical AI utilization will be judged by tech media pioneers.'
+      'Direct entry form assessment (1 hr 30 mins duration).',
+      'Strict independent work; AI tools prohibited.'
     ]
   },
   {
-    id: 'graphic-design',
-    title: 'Graphic Design & Digital Art',
+    id: 'graphic-designing',
+    title: 'Graphic Designing',
     sinhala: 'ප්‍රස්ථාරික නිර්මාණකරණය',
     type: 'digital',
     mode: 'Online',
-    languages: 'N/A',
-    ageGroup: 'Junior & Senior',
+    languages: 'Sinhala, English',
+    ageGroup: 'Open Category',
     icon: 'fa-solid fa-bezier-curve',
-    summary: 'Poster art, brand identity design, or digital illustration encapsulating the essence of Peraliya 2026.',
+    summary: 'Digital graphic design, visual branding, poster composition, and typography.',
     guidelines: [
-      'Theme will be announced on the registration portal 7 days before deadline.',
-      'Submit high-res PNG/PDF + raw source file (PSD, AI, or layered vector).',
-      'Typography balance, visual hierarchy, color theory, and original conceptualization will be rated.'
-    ]
-  },
-  {
-    id: 'video-editing',
-    title: 'Video Editing & Motion Graphics',
-    sinhala: 'වීඩියෝ සංස්කරණය හා සජීවීකරණය',
-    type: 'digital',
-    mode: 'Online',
-    languages: 'N/A',
-    ageGroup: 'Senior Category',
-    icon: 'fa-solid fa-sliders',
-    summary: 'Dynamic editing, rhythm cutting, sound fx integration, title sequences, and motion graphic mastery.',
-    guidelines: [
-      'Raw footage package will be provided to participants upon registration.',
-      'Create an electrifying 60-second teaser trailer utilizing the provided media assets and music.'
-    ]
-  },
-  {
-    id: 'media-quiz',
-    title: 'Media Aptitude & Knowledge Quiz',
-    sinhala: 'මාධ්‍ය දැනුම මිනුම තරගාවලිය',
-    type: 'journalism',
-    mode: 'Onsite',
-    languages: 'Sinhala, English',
-    ageGroup: 'Teams of 3 Students (Intermediate / Senior)',
-    icon: 'fa-solid fa-brain',
-    summary: 'Rigorous test of world journalism history, Sri Lankan mass media, cinema milestones, and digital communication.',
-    guidelines: [
-      'Round 1: Written MCQ and rapid-fire screening test.',
-      'Round 2: Grand Stage Buzzer Round on Media Day morning for the top 5 schools.'
-    ]
-  },
-  {
-    id: 'editorial-writing',
-    title: 'Feature Journalism & Editorial',
-    sinhala: 'මාධ්‍ය ලිපි හා කතුවැකි රචනය',
-    type: 'journalism',
-    mode: 'Online',
-    languages: 'Sinhala, English',
-    ageGroup: 'Junior & Senior',
-    icon: 'fa-solid fa-pen-nib',
-    summary: 'In-depth feature writing, investigative essays, and commentary on contemporary media ethics.',
-    guidelines: [
-      'Article word count: 800 - 1200 words in PDF format.',
-      'Plagiarism checks will be enforced; originality, coherent thesis, and rhetorical eloquence will decide the winners.'
+      'Submit design based on official themes in JPG/PNG format.',
+      'Assessed on visual composition, creativity, and original layout.'
     ]
   }
 ];
@@ -843,8 +812,18 @@ function initRegistrationWorkflow() {
         // Cache registration locally in browser
         try {
           const history = JSON.parse(localStorage.getItem('peraliya_school_registrations') || '[]');
-          history.push({ schoolCode, school: schoolName, district, date: timestamp });
+          history.push({ 
+            schoolCode, 
+            refCode: schoolCode, 
+            schoolName, 
+            teacherName, 
+            teacherPhone: teacherPhone || teacherWhatsapp,
+            teacherWhatsapp,
+            district, 
+            date: timestamp 
+          });
           localStorage.setItem('peraliya_school_registrations', JSON.stringify(history));
+          localStorage.setItem('peraliya_last_registered_code', schoolCode);
         } catch (err) {}
 
         sfx.playSuccess();
@@ -872,7 +851,13 @@ function openSuccessModal(refCode, schoolName) {
   if (codeEl) codeEl.textContent = refCode;
   if (schoolEl) schoolEl.textContent = schoolName;
 
-  if (modal) modal.classList.add('open');
+  if (modal) {
+    modal.classList.add('open');
+    const ctaBtn = modal.querySelector('a[href*="contestants.html"]');
+    if (ctaBtn) {
+      ctaBtn.href = `contestants.html?code=${encodeURIComponent(refCode)}`;
+    }
+  }
 }
 window.openSuccessModal = openSuccessModal;
 

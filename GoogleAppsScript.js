@@ -59,10 +59,10 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
     lock.waitLock(10000); // Wait up to 10 seconds for concurrent requests
-    
+
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var postData;
-    
+
     if (e.postData && e.postData.contents) {
       try {
         postData = JSON.parse(e.postData.contents);
@@ -110,6 +110,70 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify({
         status: "success",
         message: "Contact inquiry recorded successfully"
+      })).setMimeType(ContentService.MimeType.JSON);
+
+    } else if (recordType === "contestant" || recordType === "contestants") {
+      // -------------------------------------------------------------
+      // CONTESTANT REGISTRATIONS SHEET
+      // -------------------------------------------------------------
+      var contestantSheet = ss.getSheetByName("Contestant Registrations") || ss.getSheetByName("Contestants");
+      if (!contestantSheet) {
+        contestantSheet = ss.insertSheet("Contestant Registrations");
+        var contestantHeaders = [
+          "Timestamp",
+          "Contestant ID",
+          "School Code",
+          "School Name",
+          "Coordinator Name",
+          "Coordinator Mobile",
+          "Full Name",
+          "Name with Initials",
+          "Grade",
+          "Gender",
+          "Contestant Mobile",
+          "Email",
+          "Category",
+          "Medium",
+          "Division",
+          "Submission Link"
+        ];
+        contestantSheet.appendRow(contestantHeaders);
+        var contestantHeaderRange = contestantSheet.getRange(1, 1, 1, contestantHeaders.length);
+        contestantHeaderRange.setBackground("#0284c7");
+        contestantHeaderRange.setFontColor("#ffffff");
+        contestantHeaderRange.setFontWeight("bold");
+        contestantSheet.setFrozenRows(1);
+      }
+
+      var contestantsList = Array.isArray(postData.contestants) ? postData.contestants : [postData];
+      var addedCount = 0;
+
+      contestantsList.forEach(function (c, index) {
+        contestantSheet.appendRow([
+          new Date().toLocaleString("en-GB", { timeZone: "Asia/Colombo" }),
+          c.contestantId || ("CT-" + (postData.schoolCode || "SC000") + "-" + ("000" + (index + 1)).slice(-3)),
+          postData.schoolCode || c.schoolCode || "",
+          postData.schoolName || c.schoolName || "",
+          postData.teacherName || c.teacherName || "",
+          postData.teacherPhone || c.teacherPhone || "",
+          c.fullName || c.name || "",
+          c.nameWithInitials || c.shortName || "",
+          c.grade || "",
+          c.gender || "",
+          c.phone || c.whatsapp || "",
+          c.email || "",
+          c.category || "",
+          c.medium || "",
+          c.division || "",
+          c.submissionUrl || c.link || ""
+        ]);
+        addedCount++;
+      });
+
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "success",
+        count: addedCount,
+        message: "Recorded " + addedCount + " contestant registration(s) in Google Sheets."
       })).setMimeType(ContentService.MimeType.JSON);
 
     } else {
@@ -221,6 +285,38 @@ function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var regSheet = ss.getSheetByName("Registrations") || ss.getActiveSheet();
   var codeInfo = getLastSchoolCodeInfo(regSheet);
+  var params = e ? (e.parameter || {}) : {};
+
+  // If a school code query is passed (e.g. ?code=SC001 or ?schoolCode=SC001)
+  if (params.code || params.schoolCode) {
+    var searchCode = String(params.code || params.schoolCode || "").trim().toUpperCase();
+    var lastRow = regSheet.getLastRow();
+
+    if (lastRow > 1) {
+      var data = regSheet.getRange(2, 1, lastRow - 1, 13).getValues();
+      for (var i = 0; i < data.length; i++) {
+        var rowCode = String(data[i][1] || "").trim().toUpperCase(); // Column 2: School Code
+        if (rowCode === searchCode) {
+          return ContentService.createTextOutput(JSON.stringify({
+            valid: true,
+            status: "success",
+            schoolCode: rowCode,
+            schoolName: String(data[i][2] || "").trim(), // Column 3: School Name
+            province: String(data[i][3] || "").trim(),   // Column 4: Province
+            district: String(data[i][4] || "").trim(),   // Column 5: District
+            teacherName: String(data[i][7] || "").trim(),// Column 8: Coordinator Name
+            teacherPhone: String(data[i][8] || data[i][9] || "").trim() // Column 9/10: Coordinator Contact
+          })).setMimeType(ContentService.MimeType.JSON);
+        }
+      }
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({
+      valid: false,
+      status: "not_found",
+      message: "School code " + searchCode + " not found in registrations."
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
 
   return ContentService.createTextOutput(JSON.stringify({
     status: "online",
