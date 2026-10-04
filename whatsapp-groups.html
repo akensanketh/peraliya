@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Category WhatsApp Groups | Peraliya '26</title>
+  <meta name="description"
+    content="Join the official category WhatsApp groups for Peraliya '26 All-Island Inter-School Media Competition to receive scripts, time slots, submission links, and live updates.">
+  <meta name="keywords"
+    content="Peraliya 2026, Sirimavo Bandaranaike Vidyalaya, Sisuvisara Media Unit, WhatsApp Groups, Media Competition Sri Lanka">
+  <meta name="theme-color" content="#050811">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Category WhatsApp Groups — Peraliya '26">
+  <meta property="og:description"
+    content="Official WhatsApp group directory for all 10 competition categories (News Presenting, Dubbing, Sports Commentary, Photography, Videography, Graphic Design, Technical, etc.).">
+  <meta property="og:image" content="assets/SBV_MediaUnit_logo.png">
+
+  <!-- Favicon & Crests -->
+  <link rel="icon" type="image/png" href="assets/SBV_MediaUnit_logo.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Noto+Sans+Sinhala:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* Custom Styling for WhatsApp Groups Portal */
+    .whatsapp-hero {
+      padding: 6rem 1rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .whatsapp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25d366;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 25px rgba(37, 211, 102, 0.2);
+    }
+
+    .whatsapp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .wa-card {
+      background: rgba(13, 22, 41, 0.78);
+      border: 1px solid var(--border-cyan);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .wa-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #25d366, var(--color-cyan));
+      opacity: 0.7;
+    }
+
+    .wa-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(37, 211, 102, 0.6);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.18);
+    }
+
+    .wa-card.highlighted {
+      border: 2px solid #25d366 !important;
+      background: rgba(37, 211, 102, 0.08) !important;
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.3) !important;
+    }
+
+    .wa-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .wa-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .wa-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .wa-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .wa-badge-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      display: inline-block;
+    }
+
+    .wa-badge-sinhala {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .wa-badge-english {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .wa-badge-open {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+      transition: all 0.3s ease;
+      margin-top: 1.25rem;
+    }
+
+    .wa-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    .search-filter-bar {
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input-wrap i {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(13, 22, 41, 0.85);
+      border: 1px solid var(--border-cyan);
+      border-radius: var(--radius-full);
+      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      color: #ffffff;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: #25d366;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ambient Animated Background FX -->
+  <div class="ambient-fx-wrap" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Main Website Container -->
+  <div class="site-wrapper">
+
+    <!-- Global Header Navigation -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="brand-logo-group">
+          <img src="assets/SBV_logo.png" alt="Sirimavo Bandaranaike Vidyalaya Crest" class="crest-img">
+          <img src="assets/SBV_MediaUnit_logo.png" alt="Sisuvisara Media Unit Crest" class="crest-img">
+          <div class="brand-text-stack">
+            <span class="brand-title">PERALIYA '26</span>
+            <span class="brand-sub">Sisuvisara Media Unit</span>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="index.html" class="nav-link">Main Portal</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="contestants.html" class="nav-link">Contestant Registration</a>
+          <a href="whatsapp-groups.html" class="nav-link active">WhatsApp Groups</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="contestants.html" class="btn-primary-glow">
+            <i class="fa-solid fa-user-plus"></i> Register Contestants
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+      <!-- Hero Section -->
+      <section class="whatsapp-hero">
+        <div class="container">
+          <div class="whatsapp-badge">
+            <i class="fa-brands fa-whatsapp"></i> Official Category Communication Directory
+          </div>
+
+          <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem;">
+            JOIN YOUR COMPETITION <span class="text-gradient">WHATSAPP GROUP</span>
+          </h1>
+
+          <p class="hero-sub" style="max-width: 760px; margin: 0 auto 2rem; color: #94a3b8; font-size: 1.05rem;">
+            Contestants must join the official WhatsApp group for their registered competition category to receive event scripts, submission instructions, recording guidelines, time slots, and live announcements.
+          </p>
+
+          <!-- Search Bar -->
+          <div class="search-filter-bar">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="wa-search" class="search-input" placeholder="Search by category name or language (e.g. News Presenting, Sinhala, Dubbing)..." oninput="filterGroups()">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notification Banner for Registered Contestants -->
+      <section class="container" id="registered-notice" style="display: none; margin-bottom: 2rem;">
+        <div style="background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.4); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; box-shadow: 0 0 30px rgba(37, 211, 102, 0.2);">
+          <div style="font-size: 1.2rem; font-weight: 700; color: #86efac; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+            <i class="fa-solid fa-circle-check" style="color: #25d366;"></i>
+            <span id="registered-school-title">Your Registered Contestant Groups</span>
+          </div>
+          <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 0;">
+            Below are the direct WhatsApp group links matching your contestant registration batch. Please join all relevant groups.
+          </p>
+        </div>
+      </section>
+
+      <!-- Groups Grid Section -->
+      <section class="container" style="padding-bottom: 6rem;">
+        <div class="whatsapp-grid" id="wa-grid-container">
+          <!-- Dynamic JS Populated Cards -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="background: rgba(4, 7, 15, 0.95); border-top: 1px solid var(--border-cyan); padding: 3rem 1rem; text-align: center;">
+      <div class="container">
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+          <img src="assets/SBV_logo.png" alt="SBV Crest" width="36" height="36">
+          <img src="assets/SBV_MediaUnit_logo.png" alt="Media Unit Crest" width="36" height="36">
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.5rem;">
+          Peraliya '26 — Sisuvisara Media Unit, Sirimavo Bandaranaike Vidyalaya, Colombo 07.
+        </p>
+        <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.78rem;">
+          &copy; 2026 Sisuvisara Media Unit. All Rights Reserved.
+        </p>
+        <p class="footer-credit" style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem; letter-spacing: 0.5px;">
+          Designed and developed by <span style="color: var(--color-cyan); font-weight: 700;">Aken Sanketh</span>
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- WhatsApp Groups Script Data Repository -->
+  <script>
+    const WHATSAPP_GROUPS_DATA = [
+      {
+        id: 'news-presenting-sinhala',
+        category: 'News Presenting',
+        medium: 'Sinhala',
+        title: 'Sinhala News Presenting',
+        sinhalaTitle: 'ප්‍රවෘත්ති නිවේදනය (සිංහල)',
+        url: 'https://chat.whatsapp.com/L8ITsI4qoBNB4Ntnwhq60p',
+        icon: 'fa-solid fa-microphone-lines',
+        desc: 'Official WhatsApp group for Sinhala News Presenting contestants. Broadcast scripts & guidelines will be shared here.'
+      },
+      {
+        id: 'news-presenting-english',
+        category: 'News Presenting',
+        medium: 'English',
+        title: 'English News Presenting',
+        sinhalaTitle: 'ප්‍රවෘත්ති නිවේදනය (ඉංග්‍රීසි)',
+        url: 'https://chat.whatsapp.com/L6NAOpf18dk1JkuRKFtrDv',
+        icon: 'fa-solid fa-microphone-lines',
+        desc: 'Official WhatsApp group for English News Presenting contestants. News scripts and studio reading instructions.'
+      },
+      {
+        id: 'news-editing-sinhala',
+        category: 'News Editing',
+        medium: 'Sinhala',
+        title: 'Sinhala News Editing',
+        sinhalaTitle: 'පුවත් සංස්කරණය (සිංහල)',
+        url: 'https://chat.whatsapp.com/EBeMftmcFQRIdYe26aX7fU',
+        icon: 'fa-solid fa-newspaper',
+        desc: 'Official WhatsApp group for Sinhala News Editing contestants. Timed written guidelines & submission info.'
+      },
+      {
+        id: 'news-editing-english',
+        category: 'News Editing',
+        medium: 'English',
+        title: 'English News Editing',
+        sinhalaTitle: 'පුවත් සංස්කරණය (ඉංග්‍රීසි)',
+        url: 'https://chat.whatsapp.com/L0D0xoa2L6pL2qSq4K15Le',
+        icon: 'fa-solid fa-newspaper',
+        desc: 'Official WhatsApp group for English News Editing contestants. Timed window rules and PDF submission instructions.'
+      },
+      {
+        id: 'program-presenting-sinhala',
+        category: 'Program Presenting',
+        medium: 'Sinhala',
+        title: 'Sinhala Program Presenting',
+        sinhalaTitle: 'වැඩසටහන් ඉදිරිපත් කිරීම (සිංහල)',
+        url: 'https://chat.whatsapp.com/EHSBiVSkTmCLuAbUY0Fdli',
+        icon: 'fa-solid fa-bullhorn',
+        desc: 'Official WhatsApp group for Sinhala Program Presenting contestants. TV/Radio host scripts & segment rules.'
+      },
+      {
+        id: 'program-presenting-english',
+        category: 'Program Presenting',
+        medium: 'English',
+        title: 'English Program Presenting',
+        sinhalaTitle: 'වැඩසටහන් ඉදිරිපත් කිරීම (ඉංග්‍රීසි)',
+        url: 'https://chat.whatsapp.com/LFZhSorlamAAYQ8AFX8cWT',
+        icon: 'fa-solid fa-bullhorn',
+        desc: 'Official WhatsApp group for English Program Presenting contestants. Presentation formats and broadcast prompts.'
+      },
+      {
+        id: 'dubbing-english',
+        category: 'Dubbing',
+        medium: 'English',
+        title: 'English Dubbing',
+        sinhalaTitle: 'හඬකැවීම් තරගාවලිය',
+        url: 'https://chat.whatsapp.com/FmzjQcZqWfmCBHaKa22Jx3',
+        icon: 'fa-solid fa-microphone',
+        desc: 'Official WhatsApp group for Dubbing & Voice Acting contestants. Video snippets & audio sync clips shared here.'
+      },
+      {
+        id: 'sports-commentary-sinhala',
+        category: 'Sports Commentary',
+        medium: 'Sinhala',
+        title: 'Sinhala Sports Commentary',
+        sinhalaTitle: 'ක්‍රීඩා විස්තර විචාරය (සිංහල)',
+        url: 'https://chat.whatsapp.com/JYrzZtV4jhzHPIT92ypkbe',
+        icon: 'fa-solid fa-trophy',
+        desc: 'Official WhatsApp group for Sinhala Sports Commentary contestants. Match clips (Cricket/Football/Rugby) released here.'
+      },
+      {
+        id: 'sports-commentary-english',
+        category: 'Sports Commentary',
+        medium: 'English',
+        title: 'English Sports Commentary',
+        sinhalaTitle: 'ක්‍රීඩා විස්තර විචාරය (ඉංග්‍රීසි)',
+        url: 'https://chat.whatsapp.com/HuQEsEqEVpO5XavY3uoVKn',
+        icon: 'fa-solid fa-trophy',
+        desc: 'Official WhatsApp group for English Sports Commentary contestants. Live match commentary video assets.'
+      },
+      {
+        id: 'cartoon-drawing',
+        category: 'Cartoon Drawing',
+        medium: 'Open',
+        title: 'Cartoon Drawing',
+        sinhalaTitle: 'කාටූන් ඇඳීම (Open Category)',
+        url: 'https://chat.whatsapp.com/CnMVIMkpR72LwDYYq7TSVF',
+        icon: 'fa-solid fa-pencil',
+        desc: 'Official WhatsApp group for Cartoon Drawing contestants. Topics and illustration upload instructions.'
+      },
+      {
+        id: 'photography',
+        category: 'Photography',
+        medium: 'Open',
+        title: 'Photography',
+        sinhalaTitle: 'ඡායාරූපකරණය (Open Category)',
+        url: 'https://chat.whatsapp.com/FSe9PD8Bh5x65gmlqaqHkM',
+        icon: 'fa-solid fa-camera',
+        desc: 'Official WhatsApp group for Photography contestants. Subcategories, rules, and image link instructions.'
+      },
+      {
+        id: 'videography',
+        category: 'Videography',
+        medium: 'Open',
+        title: 'Videography',
+        sinhalaTitle: 'වීඩියෝකරණය (Open Category)',
+        url: 'https://chat.whatsapp.com/KNnAkTqj7exE5Z2o2fyFCL',
+        icon: 'fa-solid fa-film',
+        desc: 'Official WhatsApp group for Videography contestants. Short film guidelines & raw footage submission requirements.'
+      },
+      {
+        id: 'technical',
+        category: 'Technical',
+        medium: 'Open',
+        title: 'Technical',
+        sinhalaTitle: 'තාක්ෂණික ප්‍රශ්න පත්‍රය (Open Category)',
+        url: 'https://chat.whatsapp.com/GjpZAOEsJIBJEJH3PBMET7',
+        icon: 'fa-solid fa-microchip',
+        desc: 'Official WhatsApp group for Technical Paper contestants. Online paper access form links & timer rules.'
+      },
+      {
+        id: 'graphic-designing',
+        category: 'Graphic Designing',
+        medium: 'Open',
+        title: 'Graphic Designing',
+        sinhalaTitle: 'ප්‍රස්ථාරික නිර්මාණකරණය (Open Category)',
+        url: 'https://chat.whatsapp.com/KZL0ePJE2ezBUTX6muXhNv',
+        icon: 'fa-solid fa-bezier-curve',
+        desc: 'Official WhatsApp group for Graphic Designing contestants. Design prompts, themes, and poster dimensions.'
+      }
+    ];
+
+    function renderGroups(filterQuery = '') {
+      const container = document.getElementById('wa-grid-container');
+      container.innerHTML = '';
+
+      const query = filterQuery.toLowerCase().trim();
+      const filtered = WHATSAPP_GROUPS_DATA.filter(g => {
+        return g.title.toLowerCase().includes(query) ||
+               g.category.toLowerCase().includes(query) ||
+               g.medium.toLowerCase().includes(query) ||
+               g.desc.toLowerCase().includes(query);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+            <i class="fa-solid fa-folder-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <h3 style="color: #ffffff; margin-bottom: 0.5rem;">No WhatsApp Groups Found</h3>
+            <p>Try searching for another category or language keyword.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(g => {
+        const badgeClass = g.medium === 'Sinhala' ? 'wa-badge-sinhala' : (g.medium === 'English' ? 'wa-badge-english' : 'wa-badge-open');
+        
+        const card = document.createElement('div');
+        card.className = 'wa-card';
+        card.id = `group-${g.id}`;
+        card.innerHTML = `
+          <div>
+            <div class="wa-card-header">
+              <div class="wa-icon-box">
+                <i class="${g.icon}"></i>
+              </div>
+              <span class="wa-badge-pill ${badgeClass}">${g.medium}</span>
+            </div>
+            <h3 class="wa-title">${g.title}</h3>
+            <div class="wa-subtitle">${g.sinhalaTitle}</div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; margin-top: 0.85rem;">
+              ${g.desc}
+            </p>
+          </div>
+          <a href="${g.url}" target="_blank" rel="noopener noreferrer" class="wa-btn">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Join WhatsApp Group
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterGroups() {
+      const q = document.getElementById('wa-search').value;
+      renderGroups(q);
+    }
+
+    // Auto highlight registered groups if URL query parameters exist
+    window.addEventListener('DOMContentLoaded', function() {
+      renderGroups();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const regCat = urlParams.get('category');
+      const regMed = urlParams.get('medium');
+      const school = urlParams.get('school');
+
+      if (regCat || school) {
+        document.getElementById('registered-notice').style.display = 'block';
+        if (school) {
+          document.getElementById('registered-school-title').innerText = `Registered WhatsApp Groups for (${school.toUpperCase()})`;
+        }
+
+        // Highlight matching group cards
+        WHATSAPP_GROUPS_DATA.forEach(g => {
+          if ((regCat && g.category.toLowerCase() === regCat.toLowerCase()) || 
+              (regMed && g.medium.toLowerCase() === regMed.toLowerCase())) {
+            const el = document.getElementById(`group-${g.id}`);
+            if (el) {
+              el.classList.add('highlighted');
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

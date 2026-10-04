@@ -254,6 +254,7 @@
           <a href="guidelines.html" class="nav-link">Guidelines</a>
           <a href="index.html#register" class="nav-link">School Registration</a>
           <a href="contestants.html" class="nav-link active">Contestants</a>
+          <a href="whatsapp-groups.html" class="nav-link">WhatsApp Groups</a>
           <a href="index.html#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -283,6 +284,7 @@
         <a href="guidelines.html">Rules &amp; Regulations</a>
         <a href="index.html#register">School Registration</a>
         <a href="contestants.html">Contestant Registration</a>
+        <a href="whatsapp-groups.html">WhatsApp Groups</a>
         <a href="index.html#contact">Contact Unit</a>
       </div>
     </div>
@@ -1088,11 +1090,43 @@
       submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Submitted Successfully';
     });
 
+    const WHATSAPP_LINKS_MAP = {
+      'News Presenting': {
+        'Sinhala': { title: 'Sinhala News Presenting', url: 'https://chat.whatsapp.com/L8ITsI4qoBNB4Ntnwhq60p' },
+        'English': { title: 'English News Presenting', url: 'https://chat.whatsapp.com/L6NAOpf18dk1JkuRKFtrDv' }
+      },
+      'News Editing': {
+        'Sinhala': { title: 'Sinhala News Editing', url: 'https://chat.whatsapp.com/EBeMftmcFQRIdYe26aX7fU' },
+        'English': { title: 'English News Editing', url: 'https://chat.whatsapp.com/L0D0xoa2L6pL2qSq4K15Le' }
+      },
+      'Program Presenting': {
+        'Sinhala': { title: 'Sinhala Program Presenting', url: 'https://chat.whatsapp.com/EHSBiVSkTmCLuAbUY0Fdli' },
+        'English': { title: 'English Program Presenting', url: 'https://chat.whatsapp.com/LFZhSorlamAAYQ8AFX8cWT' }
+      },
+      'Dubbing': {
+        'Sinhala': { title: 'English Dubbing', url: 'https://chat.whatsapp.com/FmzjQcZqWfmCBHaKa22Jx3' },
+        'English': { title: 'English Dubbing', url: 'https://chat.whatsapp.com/FmzjQcZqWfmCBHaKa22Jx3' }
+      },
+      'Sports Commentary': {
+        'Sinhala': { title: 'Sinhala Sports Commentary', url: 'https://chat.whatsapp.com/JYrzZtV4jhzHPIT92ypkbe' },
+        'English': { title: 'English Sports Commentary', url: 'https://chat.whatsapp.com/HuQEsEqEVpO5XavY3uoVKn' }
+      },
+      'Cartoon Drawing': { title: 'Cartoon Drawing', url: 'https://chat.whatsapp.com/CnMVIMkpR72LwDYYq7TSVF' },
+      'Photography': { title: 'Photography', url: 'https://chat.whatsapp.com/FSe9PD8Bh5x65gmlqaqHkM' },
+      'Videography': { title: 'Videography', url: 'https://chat.whatsapp.com/KNnAkTqj7exE5Z2o2fyFCL' },
+      'Technical': { title: 'Technical', url: 'https://chat.whatsapp.com/GjpZAOEsJIBJEJH3PBMET7' },
+      'Graphic Designing': { title: 'Graphic Designing', url: 'https://chat.whatsapp.com/KZL0ePJE2ezBUTX6muXhNv' }
+    };
+
     function showSuccessModal(schoolName, contestantsList, schoolCode) {
       document.getElementById('modal-school-display').innerText = `${schoolName} (${schoolCode.toUpperCase()})`;
       
       const listContainer = document.getElementById('modal-contestants-list');
       listContainer.innerHTML = '';
+
+      const waLinksContainer = document.getElementById('modal-whatsapp-links');
+      waLinksContainer.innerHTML = '';
+      const addedWaUrls = new Set();
 
       contestantsList.forEach(c => {
         const row = document.createElement('div');
@@ -1108,7 +1142,38 @@
           </div>
         `;
         listContainer.appendChild(row);
+
+        // Find relevant WhatsApp group
+        const catGroup = WHATSAPP_LINKS_MAP[c.category];
+        let targetWa = null;
+        if (catGroup) {
+          if (catGroup.url) {
+            targetWa = catGroup;
+          } else if (c.medium && catGroup[c.medium]) {
+            targetWa = catGroup[c.medium];
+          } else {
+            targetWa = catGroup['Sinhala'] || catGroup['English'];
+          }
+        }
+
+        if (targetWa && !addedWaUrls.has(targetWa.url)) {
+          addedWaUrls.add(targetWa.url);
+          const btn = document.createElement('a');
+          btn.href = targetWa.url;
+          btn.target = '_blank';
+          btn.rel = 'noopener noreferrer';
+          btn.style.cssText = 'display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #25d366, #128c7e); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1rem; border-radius: 9999px; text-decoration: none; margin: 0.25rem; box-shadow: 0 4px 15px rgba(37,211,102,0.3);';
+          btn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Join ${targetWa.title} Group`;
+          waLinksContainer.appendChild(btn);
+        }
       });
+
+      // Add direct button to open the complete WhatsApp Groups directory page
+      const directoryBtn = document.createElement('a');
+      directoryBtn.href = `whatsapp-groups.html?school=${encodeURIComponent(schoolCode)}`;
+      directoryBtn.style.cssText = 'display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--border-cyan); color: var(--color-cyan); font-weight: 700; font-size: 0.85rem; padding: 0.6rem 1rem; border-radius: 9999px; text-decoration: none; margin: 0.25rem;';
+      directoryBtn.innerHTML = `<i class="fa-solid fa-layer-group"></i> Open All WhatsApp Groups Page`;
+      waLinksContainer.appendChild(directoryBtn);
 
       const modal = document.getElementById('contestants-success-modal');
       modal.style.display = 'flex';
