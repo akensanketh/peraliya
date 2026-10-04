@@ -23,7 +23,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Noto+Sans+Sinhala:wght@400;600;700;800&display=swap"
     rel="stylesheet">
@@ -31,7 +31,7 @@
   <style>
     /* Custom Styling for WhatsApp Groups Portal */
     .whatsapp-hero {
-      padding: 6rem 1rem 3rem;
+      padding: 4rem 1rem 2.5rem;
       text-align: center;
       position: relative;
     }
@@ -53,7 +53,7 @@
 
     .whatsapp-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -69,6 +69,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .wa-card::before {
@@ -125,7 +127,8 @@
     }
 
     .wa-subtitle {
-      font-size: 0.85rem;
+      font-family: var(--font-sinhala);
+      font-size: 0.88rem;
       color: #94a3b8;
     }
 
@@ -137,6 +140,7 @@
       padding: 0.25rem 0.65rem;
       border-radius: var(--radius-full);
       display: inline-block;
+      white-space: nowrap;
     }
 
     .wa-badge-sinhala {
@@ -210,7 +214,7 @@
       border-radius: var(--radius-full);
       padding: 0.9rem 1.2rem 0.9rem 3rem;
       color: #ffffff;
-      font-size: 1rem;
+      font-size: 0.95rem;
       outline: none;
       transition: all 0.3s ease;
     }
@@ -219,6 +223,20 @@
       border-color: #25d366;
       box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
     }
+
+    @media (max-width: 600px) {
+      .whatsapp-hero {
+        padding-top: 3rem;
+      }
+
+      .whatsapp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wa-card {
+        padding: 1.25rem;
+      }
+    }
   </style>
 </head>
 
@@ -226,41 +244,75 @@
 
   <!-- Ambient Animated Background FX -->
   <div class="ambient-fx-wrap" aria-hidden="true">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
     <div class="grid-overlay"></div>
   </div>
 
   <!-- Main Website Container -->
-  <div class="site-wrapper">
+  <div class="site-content">
 
     <!-- Global Header Navigation -->
     <header class="site-header">
       <div class="container header-container">
-        <a href="index.html" class="brand-logo-group">
-          <img src="assets/SBV_logo.png" alt="Sirimavo Bandaranaike Vidyalaya Crest" class="crest-img">
-          <img src="assets/SBV_MediaUnit_logo.png" alt="Sisuvisara Media Unit Crest" class="crest-img">
-          <div class="brand-text-stack">
+        <a href="index.html" class="header-brand" aria-label="Peraliya 2026 Homepage">
+          <div class="header-logos">
+            <img src="assets/SBV_logo.png" alt="Sirimavo Bandaranaike Vidyalaya Crest" class="brand-crest" width="44"
+              height="44">
+            <img src="assets/SBV_MediaUnit_logo.png" alt="Sisuvisara Media Unit Crest" class="brand-crest" width="44"
+              height="44">
+          </div>
+          <div class="brand-text">
             <span class="brand-title">PERALIYA '26</span>
-            <span class="brand-sub">Sisuvisara Media Unit</span>
+            <span class="brand-sinhala">WhatsApp Group Directory</span>
+            <span class="brand-school">Sirimavo Bandaranaike Vidyalaya</span>
           </div>
         </a>
 
-        <nav class="main-nav">
-          <a href="index.html" class="nav-link">Main Portal</a>
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link">Home</a>
           <a href="guidelines.html" class="nav-link">Guidelines</a>
-          <a href="contestants.html" class="nav-link">Contestant Registration</a>
+          <a href="contestants.html" class="nav-link">Contestants</a>
           <a href="whatsapp-groups.html" class="nav-link active">WhatsApp Groups</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
         </nav>
 
         <div class="header-actions">
-          <a href="contestants.html" class="btn-primary-glow">
-            <i class="fa-solid fa-user-plus"></i> Register Contestants
+          <button type="button" class="btn-audio-toggle" id="audio-toggle-btn" aria-label="Toggle Interface Audio"
+            title="Interface Audio">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <a href="contestants.html" class="btn-header-cta">
+            <i class="fa-solid fa-user-pen"></i>
+            <span>Register</span>
           </a>
+          <button type="button" class="hamburger" id="hamburger-btn" aria-label="Open Mobile Menu"
+            aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
+      <div class="mobile-nav-links">
+        <a href="index.html">Home</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="contestants.html">Contestant Registration</a>
+        <a href="whatsapp-groups.html">WhatsApp Groups</a>
+        <a href="index.html#contact">Contact Unit</a>
+      </div>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 1rem;">
+        <a href="contestants.html" class="btn-primary-glow" style="width: 100%; text-align: center;">
+          <i class="fa-solid fa-user-pen"></i> Contestant Registration
+        </a>
+      </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -277,14 +329,17 @@
           </h1>
 
           <p class="hero-sub" style="max-width: 760px; margin: 0 auto 2rem; color: #94a3b8; font-size: 1.05rem;">
-            Contestants must join the official WhatsApp group for their registered competition category to receive event scripts, submission instructions, recording guidelines, time slots, and live announcements.
+            Contestants must join the official WhatsApp group for their registered competition category to receive event
+            scripts, submission instructions, recording guidelines, time slots, and live announcements.
           </p>
 
           <!-- Search Bar -->
           <div class="search-filter-bar">
             <div class="search-input-wrap">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" id="wa-search" class="search-input" placeholder="Search by category name or language (e.g. News Presenting, Sinhala, Dubbing)..." oninput="filterGroups()">
+              <input type="text" id="wa-search" class="search-input"
+                placeholder="Search by category name or language (e.g. News Presenting, Sinhala, Dubbing)..."
+                oninput="filterGroups()">
             </div>
           </div>
         </div>
@@ -292,13 +347,16 @@
 
       <!-- Notification Banner for Registered Contestants -->
       <section class="container" id="registered-notice" style="display: none; margin-bottom: 2rem;">
-        <div style="background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.4); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; box-shadow: 0 0 30px rgba(37, 211, 102, 0.2);">
-          <div style="font-size: 1.2rem; font-weight: 700; color: #86efac; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+        <div
+          style="background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.4); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; box-shadow: 0 0 30px rgba(37, 211, 102, 0.2);">
+          <div
+            style="font-size: 1.2rem; font-weight: 700; color: #86efac; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
             <i class="fa-solid fa-circle-check" style="color: #25d366;"></i>
             <span id="registered-school-title">Your Registered Contestant Groups</span>
           </div>
           <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 0;">
-            Below are the direct WhatsApp group links matching your contestant registration batch. Please join all relevant groups.
+            Below are the direct WhatsApp group links matching your contestant registration batch. Please join all
+            relevant groups.
           </p>
         </div>
       </section>
@@ -313,7 +371,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="site-footer" style="background: rgba(4, 7, 15, 0.95); border-top: 1px solid var(--border-cyan); padding: 3rem 1rem; text-align: center;">
+    <footer class="site-footer"
+      style="background: rgba(4, 7, 15, 0.95); border-top: 1px solid var(--border-cyan); padding: 3rem 1rem; text-align: center;">
       <div class="container">
         <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
           <img src="assets/SBV_logo.png" alt="SBV Crest" width="36" height="36">
@@ -325,13 +384,17 @@
         <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.78rem;">
           &copy; 2026 Sisuvisara Media Unit. All Rights Reserved.
         </p>
-        <p class="footer-credit" style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem; letter-spacing: 0.5px;">
+        <p class="footer-credit"
+          style="color: var(--text-secondary); font-size: 0.88rem; margin-top: 0.5rem; letter-spacing: 0.5px;">
           Designed and developed by <span style="color: var(--color-cyan); font-weight: 700;">Aken Sanketh</span>
         </p>
       </div>
     </footer>
 
   </div>
+
+  <!-- Global Application Controller Script -->
+  <script src="app.js"></script>
 
   <!-- WhatsApp Groups Script Data Repository -->
   <script>
@@ -462,7 +525,7 @@
         medium: 'Open',
         title: 'Technical',
         sinhalaTitle: 'තාක්ෂණික ප්‍රශ්න පත්‍රය (Open Category)',
-        url: 'https://chat.whatsapp.com/GjpZAOEsJIBJEJH3PBMET7',
+        url: 'https://chat.whatsapp.com/GjpZAOEsJlBJEJH3PBMET7',
         icon: 'fa-solid fa-microchip',
         desc: 'Official WhatsApp group for Technical Paper contestants. Online paper access form links & timer rules.'
       },
@@ -485,9 +548,9 @@
       const query = filterQuery.toLowerCase().trim();
       const filtered = WHATSAPP_GROUPS_DATA.filter(g => {
         return g.title.toLowerCase().includes(query) ||
-               g.category.toLowerCase().includes(query) ||
-               g.medium.toLowerCase().includes(query) ||
-               g.desc.toLowerCase().includes(query);
+          g.category.toLowerCase().includes(query) ||
+          g.medium.toLowerCase().includes(query) ||
+          g.desc.toLowerCase().includes(query);
       });
 
       if (filtered.length === 0) {
@@ -503,7 +566,7 @@
 
       filtered.forEach(g => {
         const badgeClass = g.medium === 'Sinhala' ? 'wa-badge-sinhala' : (g.medium === 'English' ? 'wa-badge-english' : 'wa-badge-open');
-        
+
         const card = document.createElement('div');
         card.className = 'wa-card';
         card.id = `group-${g.id}`;
@@ -535,7 +598,7 @@
     }
 
     // Auto highlight registered groups if URL query parameters exist
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function () {
       renderGroups();
 
       const urlParams = new URLSearchParams(window.location.search);
@@ -551,8 +614,8 @@
 
         // Highlight matching group cards
         WHATSAPP_GROUPS_DATA.forEach(g => {
-          if ((regCat && g.category.toLowerCase() === regCat.toLowerCase()) || 
-              (regMed && g.medium.toLowerCase() === regMed.toLowerCase())) {
+          if ((regCat && g.category.toLowerCase() === regCat.toLowerCase()) ||
+            (regMed && g.medium.toLowerCase() === regMed.toLowerCase())) {
             const el = document.getElementById(`group-${g.id}`);
             if (el) {
               el.classList.add('highlighted');
@@ -560,10 +623,8 @@
             }
           }
         });
-      }
     });
   </script>
-
 </body>
 
 </html>
