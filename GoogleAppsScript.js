@@ -178,18 +178,13 @@ function doPost(e) {
 
     } else {
       // -------------------------------------------------------------
-      // REGISTRATIONS SHEET (Official School Registrations)
+      // REGISTRATIONS SHEET (Official School Registrations - CLOSED)
       // -------------------------------------------------------------
-      var regSheet = ss.getSheetByName("Registrations");
-      if (!regSheet) {
-        var firstSheet = ss.getActiveSheet();
-        if (firstSheet.getName() === "Sheet1" && firstSheet.getLastRow() <= 1) {
-          regSheet = firstSheet;
-          regSheet.setName("Registrations");
-        } else {
-          regSheet = ss.insertSheet("Registrations");
-        }
-      }
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "closed",
+        message: "School registrations for Peraliya '26 are now closed. Registered schools can submit competition entries via Contestant Registration."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
 
       var regHeaders = [
         "Timestamp",

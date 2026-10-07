@@ -235,58 +235,13 @@ const server = http.createServer(async (req, res) => {
   // API ROUTE: POST /api/register
   // -------------------------------------------------------------
   if (req.method === 'POST' && pathname === '/api/register') {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-      if (body.length > 5e6) { // 5MB limit
-        res.writeHead(413, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Payload too large' }));
-        req.connection.destroy();
-      }
-    });
-
-    req.on('end', async () => {
-      try {
-        const payload = JSON.parse(body);
-        payload.timestamp = payload.timestamp || new Date().toISOString();
-        
-        // Dynamically check the last school code and create the school code after that
-        const codeInfo = await getLastAndNextSchoolCode();
-        payload.schoolCode = codeInfo.nextCode;
-        payload.refCode = codeInfo.nextCode;
-
-        // 1. Store in local JSON database
-        const registrations = readJSONFile(REGISTRATIONS_FILE);
-        registrations.push(payload);
-        writeJSONFile(REGISTRATIONS_FILE, registrations);
-        console.log(`[DATABASE] School registered: ${payload.schoolCode} (After: ${codeInfo.lastCode || 'None'}) - ${payload.schoolName}`);
-
-        // 2. Forward to Google Sheets if configured
-        forwardToGoogleSheet(payload, (err, sheetRes) => {
-          if (err) {
-            console.warn(`[GOOGLE SHEETS] Could not forward to Google Sheet:`, err.message);
-          } else {
-            console.log(`[GOOGLE SHEETS] Sync status:`, sheetRes);
-          }
-        });
-
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: true,
-          status: 'success',
-          schoolCode: payload.schoolCode,
-          refCode: payload.schoolCode,
-          lastSchoolCode: codeInfo.lastCode,
-          nextSchoolCode: payload.schoolCode,
-          message: 'School registration recorded successfully in database',
-          spreadsheetUrl: CONFIG.SPREADSHEET_URL
-        }));
-      } catch (err) {
-        console.error('Invalid JSON in /api/register:', err);
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
-      }
-    });
+    res.writeHead(403, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ 
+      success: false, 
+      status: 'closed',
+      error: 'School registrations are now closed.',
+      message: 'School registrations for Peraliya \'26 are now closed. Registered schools can submit competition entries in Contestant Registration.' 
+    }));
     return;
   }
 

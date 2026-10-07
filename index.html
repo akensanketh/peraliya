@@ -90,7 +90,7 @@
         <nav class="desktop-nav" aria-label="Main Navigation">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#about" class="nav-link">About</a>
-          <a href="#register" class="nav-link">School Registration</a>
+          <a href="#register" class="nav-link">School Registration <span style="color: #ef4444; font-size: 0.72rem; font-weight: bold; margin-left: 2px;">(Closed)</span></a>
           <a href="contestants.html" class="nav-link">Contestants</a>
           <a href="whatsapp-groups.html" class="nav-link">WhatsApp Groups</a>
           <a href="guidelines.html" class="nav-link">Rulebook</a>
@@ -123,7 +123,7 @@
       <div class="mobile-nav-links">
         <a href="#home">Home</a>
         <a href="#about">About Peraliya '26</a>
-        <a href="#register">School Registration</a>
+        <a href="#register">School Registration <span style="color: #ef4444; font-size: 0.75rem; font-weight: bold;">(Closed)</span></a>
         <a href="contestants.html">Contestant Registration</a>
         <a href="whatsapp-groups.html">WhatsApp Groups</a>
         <a href="guidelines.html">Rules &amp; Regulations</a>
@@ -133,8 +133,8 @@
         <a href="contestants.html" class="btn-primary-glow" style="width: 100%; text-align: center;">
           <i class="fa-solid fa-user-pen"></i> Contestant Registration
         </a>
-        <a href="#register" class="btn-secondary-glass" style="width: 100%; text-align: center;">
-          <i class="fa-solid fa-school"></i> School Registration
+        <a href="#register" class="btn-secondary-glass" style="width: 100%; text-align: center; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+          <i class="fa-solid fa-lock"></i> School Registration (Closed)
         </a>
       </div>
     </div>
@@ -172,9 +172,9 @@
               <i class="fa-solid fa-user-pen"></i>
               <span>Contestant Registration</span>
             </a>
-            <a href="#register" class="btn-secondary-glass">
-              <i class="fa-solid fa-school"></i>
-              <span>School Registration</span>
+            <a href="#register" class="btn-secondary-glass" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+              <i class="fa-solid fa-lock"></i>
+              <span>School Registration (Closed)</span>
             </a>
             <a href="guidelines.html" target="_blank" class="btn-secondary-glass">
               <i class="fa-solid fa-file-shield"></i>
@@ -308,33 +308,37 @@
           <div class="registration-portal-slides" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
             
             <!-- School Registration Slide Card -->
-            <div class="reg-slide-card active" style="background: rgba(13, 22, 41, 0.85); border: 2px solid var(--color-cyan); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);">
+            <div class="reg-slide-card active" style="background: rgba(13, 22, 41, 0.85); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);">
               <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
-                <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--color-cyan); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); font-size: 1.3rem;">
-                  <i class="fa-solid fa-school"></i>
+                <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); display: flex; align-items: center; justify-content: center; color: #ef4444; font-size: 1.3rem;">
+                  <i class="fa-solid fa-school-lock"></i>
                 </div>
                 <div>
-                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-cyan); font-weight: 700; letter-spacing: 1px;">Step 1 — Institutional</span>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: #fca5a5; font-weight: 700; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.3rem;">
+                    <i class="fa-solid fa-circle-xmark"></i> Submissions Closed
+                  </span>
                   <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.15rem; margin: 0;">School Registration</h3>
                 </div>
               </div>
               <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.2rem;">
-                For Teachers-in-Charge & Media Coordinators to register your school delegation and generate an official School Code.
+                School registrations are now closed. Registered schools can continue submitting entries in the Contestant Portal.
               </p>
-              <a href="#school-reg-form" class="btn-secondary-glass" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem 1rem; font-size: 0.9rem;">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>Register School Below</span>
+              <a href="#school-reg-closed-notice" class="btn-secondary-glass" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem 1rem; font-size: 0.9rem; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">
+                <i class="fa-solid fa-lock"></i>
+                <span>Submissions Closed</span>
               </a>
             </div>
 
             <!-- Contestant Registration Slide Card -->
-            <div class="reg-slide-card" style="background: rgba(13, 22, 41, 0.85); border: 1px solid rgba(0, 229, 255, 0.35); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; transition: var(--transition);">
+            <div class="reg-slide-card" style="background: rgba(13, 22, 41, 0.85); border: 2px solid var(--color-cyan); border-radius: var(--radius-md); padding: 1.5rem; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);">
               <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
                 <div style="width: 45px; height: 45px; border-radius: 12px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); font-size: 1.3rem;">
                   <i class="fa-solid fa-user-pen"></i>
                 </div>
                 <div>
-                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-cyan); font-weight: 700; letter-spacing: 1px;">Step 2 — Individual / Team</span>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-cyan); font-weight: 700; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.3rem;">
+                    <i class="fa-solid fa-circle-check"></i> Submissions Open
+                  </span>
                   <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.15rem; margin: 0;">Contestant Registration</h3>
                 </div>
               </div>
@@ -349,178 +353,43 @@
 
           </div>
 
-          <div class="reg-card-container">
+          <div class="reg-card-container" id="school-reg-closed-notice">
+            <div style="background: radial-gradient(circle at top center, rgba(239, 68, 68, 0.12) 0%, rgba(13, 22, 41, 0.95) 100%); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">
+              <div style="width: 75px; height: 75px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); border: 2px solid rgba(239, 68, 68, 0.5); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; color: #ef4444; font-size: 2.2rem; box-shadow: 0 0 30px rgba(239, 68, 68, 0.25);">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <span style="font-size: 0.8rem; text-transform: uppercase; color: #fca5a5; font-weight: 700; letter-spacing: 2px; background: rgba(239, 68, 68, 0.15); padding: 0.4rem 1.2rem; border-radius: 50px; border: 1px solid rgba(239, 68, 68, 0.3); display: inline-block; margin-bottom: 1.2rem;">
+                Submissions Closed
+              </span>
+              <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem;">
+                School Registrations Are Closed
+              </h3>
+              <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.7; max-width: 640px; margin: 0 auto 2rem auto;">
+                The official deadline for registering new school delegations for <strong>Peraliya '26</strong> has concluded. New school registrations are no longer being accepted through the online portal.
+                <br><br>
+                If your school has already registered and obtained an <strong>Official School Code</strong> (e.g. <code>SC001</code>, <code>SC002</code>), your contestants can proceed directly to submit their competition entries in the Contestant Portal.
+              </p>
+              
+              <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <a href="contestants.html" class="btn-primary-glow" style="padding: 0.95rem 1.8rem; font-size: 0.95rem;">
+                  <i class="fa-solid fa-user-pen"></i>
+                  <span>Proceed to Contestant Registration</span>
+                </a>
+                <a href="#contact" class="btn-secondary-glass" style="padding: 0.95rem 1.8rem; font-size: 0.95rem;">
+                  <i class="fa-solid fa-headset"></i>
+                  <span>Contact Support Desk</span>
+                </a>
+              </div>
 
-            <!-- Step Indicators -->
-            <div class="reg-stepper" aria-label="Registration Progress">
-              <div class="step-indicator active" id="step-ind-1">
-                <div class="step-circle">1</div>
-                <span class="step-title">School Profile</span>
-              </div>
-              <div class="step-indicator" id="step-ind-2">
-                <div class="step-circle">2</div>
-                <span class="step-title">School Coordinator</span>
-              </div>
-              <div class="step-indicator" id="step-ind-3">
-                <div class="step-circle">3</div>
-                <span class="step-title">Verify & School Code</span>
+              <div style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px dashed rgba(255, 255, 255, 0.1); padding-top: 1.2rem; margin-top: 1.5rem;">
+                Need assistance with your School Code or registration status? Contact the Peraliya '26 Secretariat via the helpline below.
               </div>
             </div>
 
-            <!-- Form -->
-            <form id="school-reg-form" novalidate>
-
-              <!-- STEP 1: School Profile -->
-              <div class="reg-step-pane active" id="pane-step-1">
-                <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.2rem;">
-                  <i class="fa-solid fa-graduation-cap" style="color: var(--color-cyan); margin-right: 0.5rem;"></i>
-                  School Information
-                </h3>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label class="form-label" for="reg-school-name">School Full Name <span>*</span></label>
-                    <input type="text" id="reg-school-name" class="form-input" placeholder="School Full Name" required>
-                  </div>
-                </div>
-
-                <div class="form-grid two-cols">
-                  <div class="form-group">
-                    <label class="form-label" for="reg-province">Province <span>*</span></label>
-                    <select id="reg-province" class="form-select" required>
-                      <option value="Western Province">Western Province</option>
-                      <option value="Central Province">Central Province</option>
-                      <option value="Southern Province">Southern Province</option>
-                      <option value="North Western Province">North Western Province</option>
-                      <option value="Sabaragamuwa Province">Sabaragamuwa Province</option>
-                      <option value="Northern Province">Northern Province</option>
-                      <option value="Eastern Province">Eastern Province</option>
-                      <option value="Uva Province">Uva Province</option>
-                      <option value="North Central Province">North Central Province</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="reg-district">District <span>*</span></label>
-                    <input type="text" id="reg-district" class="form-input" placeholder="e.g. Colombo, Kandy, Galle"
-                      required>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- STEP 2: School Coordinator Details -->
-              <div class="reg-step-pane" id="pane-step-2">
-                <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.2rem;">
-                  <i class="fa-solid fa-user-tie" style="color: var(--color-cyan); margin-right: 0.5rem;"></i> School
-                  Coordinator Details
-                </h3>
-                <div class="form-grid two-cols">
-                  <div class="form-group">
-                    <label class="form-label" for="reg-teacher-name">School Coordinator Full Name <span>*</span></label>
-                    <input type="text" id="reg-teacher-name" class="form-input"
-                      placeholder="School Coordinator Full Name" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="reg-teacher-phone">Coordinator Contact Number (Mobile)
-                      <span>*</span></label>
-                    <input type="tel" id="reg-teacher-phone" class="form-input" placeholder="077 123 4567" required>
-                  </div>
-                </div>
-
-                <div class="form-grid two-cols">
-                  <div class="form-group">
-                    <label class="form-label" for="reg-teacher-whatsapp">Coordinator WhatsApp Number (For Official
-                      Updates) <span>*</span></label>
-                    <input type="tel" id="reg-teacher-whatsapp" class="form-input" placeholder="077 123 4567" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="reg-teacher-email">Coordinator Direct Email <span>*</span></label>
-                    <input type="email" id="reg-teacher-email" class="form-input" placeholder="coordinator@gmail.com"
-                      required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="reg-president-name">Student Media President / Leader Name <small
-                      style="color: var(--text-muted);">(Optional)</small></label>
-                  <input type="text" id="reg-president-name" class="form-input"
-                    placeholder="Student President Name & Contact">
-                </div>
-              </div>
-
-              <!-- STEP 3: Verification & School Code Issuance -->
-              <div class="reg-step-pane" id="pane-step-3">
-                <h3 style="color: #ffffff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.2rem;">
-                  <i class="fa-solid fa-clipboard-check" style="color: var(--color-cyan); margin-right: 0.5rem;"></i>
-                  School Registration Review
-                </h3>
-
-                <div id="reg-review-summary">
-                  <!-- Populated dynamically via app.js -->
-                </div>
-
-                <div
-                  style="background: rgba(0, 229, 255, 0.06); border: 1px dashed var(--color-cyan); border-radius: var(--radius-md); padding: 1.2rem; margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 0.9rem;">
-                  <div
-                    style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 229, 255, 0.15); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); flex-shrink: 0;">
-                    <i class="fa-solid fa-id-badge" style="font-size: 1.2rem;"></i>
-                  </div>
-                  <div>
-                    <div style="font-weight: 700; color: #ffffff; font-size: 0.95rem; margin-bottom: 0.25rem;">Official
-                      School Code Generation</div>
-                    <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
-                      Upon submitting this registration, a unique <strong>Official School Code</strong> (e.g.,
-                      <code>SC001</code>, <code>SC002</code>, <code>SC003</code>...) will be automatically generated and
-                      linked to your institution. Please retain this code for all subsequent competition processes and
-                      festival accreditation.
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-cyan); border-radius: var(--radius-md); padding: 1.2rem; margin-bottom: 1.5rem;">
-                  <label style="display: flex; align-items: flex-start; gap: 0.8rem; cursor: pointer;">
-                    <input type="checkbox" id="reg-terms-check"
-                      style="margin-top: 4px; accent-color: var(--color-cyan);" required>
-                    <span style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
-                      I hereby certify on behalf of our school that the provided institutional details and coordinator
-                      contacts are accurate, and our school agrees to abide by the rules and regulations of Peraliya
-                      '26.
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Stepper Navigation Buttons -->
-              <div class="form-nav-buttons" id="reg-nav-buttons">
-                <button type="button" class="btn-secondary-glass" id="btn-step-prev" style="display: none;">
-                  <i class="fa-solid fa-arrow-left"></i>
-                  <span>Previous</span>
-                </button>
-                <div style="margin-left: auto; display: flex; gap: 0.8rem; align-items: center;"
-                  id="reg-nav-forward-wrap">
-                  <button type="button" class="btn-primary-glow" id="btn-step-next">
-                    <span>Next Step</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                  <button type="submit" class="btn-primary-glow" id="btn-step-submit"
-                    style="display: none; background: linear-gradient(135deg, #0284c7 0%, #00e5ff 100%);">
-                    <i class="fa-solid fa-key"></i>
-                    <span>Register School & Generate School Code</span>
-                  </button>
-                  <button type="button" class="btn-completed-glow" id="btn-reg-completed" style="display: none;">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Completed</span>
-                  </button>
-                  <a href="https://chat.whatsapp.com/KbjkcNu6pmpCbvDxAJhKCp" target="_blank" rel="noopener noreferrer"
-                    class="btn-whatsapp-group" id="btn-reg-whatsapp" style="display: none; padding: 0.95rem 1.6rem;">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>Join Coordinators WhatsApp</span>
-                  </a>
-                </div>
-              </div>
-
+            <!-- Hidden fallback form to prevent script errors -->
+            <form id="school-reg-form" style="display: none;" novalidate>
+              <input type="checkbox" id="reg-terms-check">
             </form>
-
           </div>
 
         </div>
